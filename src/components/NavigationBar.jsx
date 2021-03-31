@@ -18,7 +18,7 @@ const NavigationBar = () => (
                     to="/login"
                     className="login-button"
                 >
-                    Login using Discord
+                    Dashboard
                 </Link>
 
             </li>

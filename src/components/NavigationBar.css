@@ -22,7 +22,7 @@ nav .links {
 	float: right;
 	padding: 0;
 	margin: 0;
-	width: 60%;
+	width: 40%;
 	height: 100%;
 	display: flex;
 	justify-content: space-around;
@@ -62,9 +62,9 @@ nav .icon-burger .line {
 }
 
 .login-button {
-    padding: 14px 20px !important;
-    background-color: rgb(255, 165, 0, 0.3);
-    color: rgb(255, 150, 0);
+    padding: 10px 12px !important;
+    border: 2px solid rgb(255, 165, 0);
+    color: black;
     border-radius: 5px;
     transition: all 180ms ease-out 0s;
 }
