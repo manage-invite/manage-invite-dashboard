@@ -3,8 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
+  background-color: rgb(52, 56, 60);
+  color: white;
   font-family: 'Inter', sans-serif;
 }
