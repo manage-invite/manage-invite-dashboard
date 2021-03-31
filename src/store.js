@@ -1,12 +1,12 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
-import { createStore, action } from 'easy-peasy';
+import { createStore, action, persist } from 'easy-peasy';
 
-const store = createStore({
+const store = createStore(persist({
     currentUser: null,
-    login: action((state, payload) => {
+    updateCurrentUser: action((state, payload) => {
         state.currentUser = payload;
     })
-});
+}));
 
 export default store;

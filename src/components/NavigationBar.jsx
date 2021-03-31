@@ -1,13 +1,25 @@
-import { useStoreState } from 'easy-peasy';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavigationBar.css';
+import io from 'socket.io-client';
 
 const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.currentUser);
+    const updateCurrentUser = useStoreActions((actions) => actions.updateCurrentUser);
 
     const login = () => {
-
+        const clientID = process.env.REACT_APP_CLIENT_ID;
+        const redirectURI = process.env.REACT_APP_REDIRECT_URI;
+        const socket = io('http://localhost:3100');
+        socket.on('connect', () => {
+            const loginURL = `https://discord.com/api/oauth2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectURI)}&response_type=code&scope=identify%20guilds&state=${socket.id}`;
+            const loginWindow = window.open(loginURL, '_blank', '');
+            socket.on('login', (userData) => {
+                updateCurrentUser(userData);
+                loginWindow.close();
+            });
+        });
     };
 
     return (
@@ -26,11 +38,27 @@ const NavigationBar = () => {
                         <button
                             type="button"
                             onClick={login}
-                            className="login-button"
+                            className="dash-button login-button"
                         >
                             Dashboard
                         </button>
-                    ) : <h1>Logged</h1> }
+                    ) : (
+                        <button
+                            type="button"
+                            className="dash-button logged-button"
+                        >
+                            <img
+                                src={currentUser.avatarURL}
+                                alt="Avatar"
+                                height="25px"
+                                style={{
+                                    borderRadius: '50%',
+                                    marginRight: '10px'
+                                }}
+                            />
+                            {currentUser.username}
+                        </button>
+                    ) }
                 </li>
             </ul>
             <label className="icon-burger" htmlFor="nav-toggle">
