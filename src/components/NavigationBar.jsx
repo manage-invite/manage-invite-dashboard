@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './NavigationBar.css';
 
 const NavigationBar = () => (
@@ -6,14 +7,13 @@ const NavigationBar = () => (
         <input id="nav-toggle" type="checkbox" />
         <div className="logo">
             <img className="img" src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="Logo" height="40px" />
-            ManageInvite
+            <Link to="/">ManageInvite</Link>
         </div>
         <ul className="links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/status">Status</Link></li>
+            <li><Link to="/docs">Documentation</Link></li>
+            <li><Link to="/support">Support server</Link></li>
+            <li><Link to="/login">Login</Link></li>
         </ul>
         <label className="icon-burger" htmlFor="nav-toggle">
             <div className="line" />

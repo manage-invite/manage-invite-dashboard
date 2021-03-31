@@ -31,13 +31,15 @@ nav .links {
 nav .links li {
 	list-style: none;
 }
+nav a {
+	text-decoration: none;
+    color: black;
+}
 nav .links a {
 	display: block;
 	padding: 1em;
 	font-size: 16px;
 	font-weight: bold;
-	text-decoration: none;
-    color: black;
 }
 #nav-toggle {
 	position: absolute;
@@ -85,7 +87,7 @@ nav .icon-burger .line {
 		font-size: 20px;
 	}
 	nav :checked ~ .links {
-		bottom: 0;
+		bottom: 300px;
 	}
 	nav .icon-burger {
 		display: block;
