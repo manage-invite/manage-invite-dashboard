@@ -13,7 +13,15 @@ const NavigationBar = () => (
             <li><Link to="/status">Status</Link></li>
             <li><Link to="/docs">Documentation</Link></li>
             <li><Link to="/support">Support server</Link></li>
-            <li><Link to="/login">Login</Link></li>
+            <li>
+                <Link
+                    to="/login"
+                    className="login-button"
+                >
+                    Login using Discord
+                </Link>
+
+            </li>
         </ul>
         <label className="icon-burger" htmlFor="nav-toggle">
             <div className="line" />
