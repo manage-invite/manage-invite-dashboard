@@ -21,6 +21,7 @@ module.exports = {
         indent: ['error', 4],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
-        'comma-dangle': ['error', 'never']
+        'comma-dangle': ['error', 'never'],
+        'jsx-a11y/label-has-associated-control': 0
     }
 };
