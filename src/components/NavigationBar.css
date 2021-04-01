@@ -62,7 +62,7 @@ nav .icon-burger .line {
 	transition: all .3s ease-in-out;
 }
 
-.dash-button {
+#dash-button {
 	background-color: transparent;
     outline: none;
     padding: 10px 12px !important;
@@ -74,15 +74,15 @@ nav .icon-burger .line {
 	min-width: 140px;
 }
 
+#dash-button:hover {
+    background-color: rgb(255, 165, 0);
+    color: white;
+}
+
 .logged-button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.dash-button:hover {
-    background-color: rgb(255, 165, 0);
-    color: white;
 }
 
 @media screen and (max-width: 768px) {
