@@ -13,7 +13,7 @@ const Servers = () => (
             Select a server
         </h1>
         <div style={{
-            width: '700px',
+            maxWidth: '700px',
             margin: '0 auto'
         }}
         >
