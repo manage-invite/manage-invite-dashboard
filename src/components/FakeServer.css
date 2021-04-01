@@ -1,0 +1,60 @@
+.fake-server {
+    display: flex;
+    align-items: center;
+    flex: 1 1;
+    height: 60px;
+    padding: 1em;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.fake-server-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #292a2b;
+    overflow: hidden;
+}
+
+.fake-server-name, .fake-server-button {
+    border-radius: 5px;
+    background: #292a2b;
+    overflow: hidden;
+}
+
+.fake-server-name {
+    flex-shrink: 1;
+    width: 270px;
+    height: 15px;
+    margin: 0 1em;
+}
+
+.fake-server-button {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 125px;
+    height: 40px;
+}
+
+.bip {
+    background: linear-gradient(90deg,#292a2b,#333435,#292a2b);
+    color: #fff;
+    height: 100%;
+    width: 30%;
+    border-radius: 5px;
+    animation: 700ms linear 0ms infinite normal none running move;
+}
+
+.bip.small {
+    width: 60%;
+}
+
+@keyframes move {
+    0% {
+        margin-left: -40%;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}

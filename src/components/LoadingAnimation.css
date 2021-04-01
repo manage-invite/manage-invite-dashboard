@@ -12,8 +12,6 @@
 }
 .ball-pulse > div {
     background-color: #fff;
-    width: 15px;
-    height: 15px;
     border-radius: 100%;
     margin: 2px;
     -webkit-animation-fill-mode: both;

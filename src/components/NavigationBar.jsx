@@ -58,6 +58,7 @@ const NavigationBar = () => {
                 id="dash-button"
                 type="button"
                 className="logged-button"
+                onClick={() => history.push('/servers')}
             >
                 <img
                     src={currentUser.avatarURL}

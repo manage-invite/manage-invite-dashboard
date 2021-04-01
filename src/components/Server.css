@@ -1,0 +1,64 @@
+.server {
+    display: flex;
+    flex: 1 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.server-icon-loading {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #292a2b;
+    overflow: hidden;
+}
+
+.server-name-loading {
+    border-radius: 5px;
+    background: #292a2b;
+    overflow: hidden;
+}
+
+.server-button-loading {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 125px;
+    height: 40px;
+}
+
+.server-info {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.server-icon {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.server-name {
+    margin-left: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1 0 1em;
+}
+
+.manage-button {
+    font-family: 'Inter', sans-serif;
+    font-size: .8em;
+    cursor: pointer;
+    padding: 10px 25px;
+    color: inherit;
+    border: none;
+    background-color: #3eb386;
+    border-radius: 3px;
+    outline: none;
+}
