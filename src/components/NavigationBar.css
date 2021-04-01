@@ -49,7 +49,7 @@ nav .icon-burger {
 	display: none;
 	position: absolute;
 	right: 5%;
-	top: 50%;
+	top: 50px;
 	transform: translateY(-50%);
 }
 nav .icon-burger .line {
