@@ -1,6 +1,6 @@
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './NavigationBar.css';
 import io from 'socket.io-client';
 import LoadingAnimation from './LoadingAnimation';
@@ -9,6 +9,7 @@ const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.currentUser);
     const updateCurrentUser = useStoreActions((actions) => actions.updateCurrentUser);
     const [loginLoading, setLoginLoading] = useState(false);
+    const history = useHistory();
 
     const login = () => {
         const clientID = process.env.REACT_APP_CLIENT_ID;
@@ -19,6 +20,7 @@ const NavigationBar = () => {
             const loginURL = `https://discord.com/api/oauth2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectURI)}&response_type=code&scope=identify%20guilds&state=${socket.id}`;
             const loginWindow = window.open(loginURL, '_blank', '');
             socket.on('init', () => {
+                history.push('/servers');
                 setLoginLoading(true);
                 loginWindow.close();
             });

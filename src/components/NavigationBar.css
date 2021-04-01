@@ -1,5 +1,4 @@
 nav {
-	position: fixed;
 	z-index: 10;
 	left: 0;
 	right: 0;
@@ -54,6 +53,7 @@ nav .icon-burger {
 	transform: translateY(-50%);
 }
 nav .icon-burger .line {
+	top: 50px;
 	width: 30px;
 	height: 5px;
 	background-color: white;

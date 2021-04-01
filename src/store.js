@@ -4,6 +4,10 @@ import { createStore, action, persist } from 'easy-peasy';
 
 const store = createStore(persist({
     currentUser: null,
+    userGuildsCache: null,
+    updateUserGuildsCache: action((state, payload) => {
+        state.userGuildsCache = payload;
+    }),
     updateCurrentUser: action((state, payload) => {
         state.currentUser = payload;
     })

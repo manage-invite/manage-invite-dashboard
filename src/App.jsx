@@ -5,6 +5,7 @@ import { StoreProvider } from 'easy-peasy';
 import Home from './pages/Home';
 import NavigationBar from './components/NavigationBar';
 import store from './store';
+import Servers from './pages/Servers';
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <Router>
                 <NavigationBar />
                 <Switch>
+                    <Route path="/servers" component={Servers} />
                     <Route path="/" component={Home} />
                 </Switch>
             </Router>
