@@ -2,8 +2,8 @@ import { useStoreActions, useStoreState } from 'easy-peasy';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './NavigationBar.css';
-import io from 'socket.io-client';
 import LoadingAnimation from './LoadingAnimation';
+import socket from '../socket';
 
 const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.currentUser);
@@ -15,20 +15,24 @@ const NavigationBar = () => {
     const login = () => {
         const clientID = process.env.REACT_APP_CLIENT_ID;
         const redirectURI = process.env.REACT_APP_REDIRECT_URI;
-        const socket = io('http://localhost:3100');
-        socket.on('connect', () => {
+        const waitConnection = !socket.connected ? new Promise((resolve) => socket.on('connect', resolve())) : new Promise((resolve) => resolve());
+        waitConnection.then(() => {
+            console.log('[WS] Connected.');
             document.querySelector('#dash-button').blur();
             const loginURL = `https://discord.com/api/oauth2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectURI)}&response_type=code&scope=identify%20guilds&state=${socket.id}`;
             const loginWindow = window.open(loginURL, '_blank', '');
             socket.on('init', () => {
+                console.log('[WS] Authentication initialized.');
                 history.push('/servers');
                 setLoginLoading(true);
                 loginWindow.close();
             });
             socket.on('login', (userData) => {
+                console.log(`[WS] Login payload received. User ID is ${userData.id}.`);
                 updateCurrentUser(userData);
             });
             socket.on('guilds', (guildsData) => {
+                console.log(`[WS] Guilds payload received. ${guildsData.length} guilds received.`);
                 updateUserGuildsCache(guildsData);
             });
         });
