@@ -22,9 +22,13 @@ const Servers = () => {
             }}
             >
                 {userGuildsCache ? (
-                    userGuildsCache.map((guild) => (
-                        <Server serverName={guild.name} serverIconURL={guild.iconURL} serverStatus="premium" />
-                    ))
+                    userGuildsCache
+                        // eslint-disable-next-line no-nested-ternary
+                        .sort((a, b) => ((a.isPremium === b.isPremium) ? 0 : a.isPremium ? -1 : 1))
+                        .filter((guild) => guild.isAdmin)
+                        .map((guild) => (
+                            <Server key={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} />
+                        ))
                 ) : (
                     <>
                         <FakeServer />

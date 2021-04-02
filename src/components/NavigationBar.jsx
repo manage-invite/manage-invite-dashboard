@@ -8,6 +8,7 @@ import LoadingAnimation from './LoadingAnimation';
 const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.currentUser);
     const updateCurrentUser = useStoreActions((actions) => actions.updateCurrentUser);
+    const updateUserGuildsCache = useStoreActions((actions) => actions.updateUserGuildsCache);
     const [loginLoading, setLoginLoading] = useState(false);
     const history = useHistory();
 
@@ -26,6 +27,9 @@ const NavigationBar = () => {
             });
             socket.on('login', (userData) => {
                 updateCurrentUser(userData);
+            });
+            socket.on('guilds', (guildsData) => {
+                updateUserGuildsCache(guildsData);
             });
         });
     };
