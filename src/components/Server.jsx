@@ -7,18 +7,22 @@ import './Server.css';
 const Server = ({
     serverName, serverIconURL, isAdded, isPremium, isWaitingVerification, isTrial
 }) => {
+    const addButton = ((isPremium || isTrial) && !isAdded);
+    const manageButton = isPremium && isAdded;
+    const manageTrialButton = isTrial && isAdded;
+
     let manageButtonText = 'Get premium';
     let manageButtonColor = '#367fa9';
     if (isWaitingVerification) {
         manageButtonText = 'Waiting for verification...';
         manageButtonColor = '#80FFA500';
-    } else if ((isPremium || isTrial) && !isAdded) {
+    } else if (addButton) {
         manageButtonText = 'Add to Discord';
         manageButtonColor = '#3eb386';
-    } else if (isPremium && isAdded) {
+    } else if (manageButton) {
         manageButtonText = 'Manage';
         manageButtonColor = '#3eb386';
-    } else if (isTrial && isAdded) {
+    } else if (manageTrialButton) {
         manageButtonText = 'Manage (trial)';
         manageButtonColor = '#3eb386';
     }
@@ -35,9 +39,9 @@ const Server = ({
                 style={{
                     backgroundColor: manageButtonColor
                 }}
+                disabled={isWaitingVerification}
             >
                 {manageButtonText}
-
             </button>
         </div>
     );

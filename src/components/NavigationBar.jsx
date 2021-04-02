@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './NavigationBar.css';
 import LoadingAnimation from './LoadingAnimation';
-import socket from '../socket';
+import { socket, ensureSocketConnected } from '../socket';
 
 const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.currentUser);
@@ -15,8 +15,7 @@ const NavigationBar = () => {
     const login = () => {
         const clientID = process.env.REACT_APP_CLIENT_ID;
         const redirectURI = process.env.REACT_APP_REDIRECT_URI;
-        const waitConnection = !socket.connected ? new Promise((resolve) => socket.on('connect', resolve())) : new Promise((resolve) => resolve());
-        waitConnection.then(() => {
+        ensureSocketConnected().then(() => {
             console.log('[WS] Connected.');
             document.querySelector('#dash-button').blur();
             const loginURL = `https://discord.com/api/oauth2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectURI)}&response_type=code&scope=identify%20guilds&state=${socket.id}`;
