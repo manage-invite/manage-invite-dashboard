@@ -60,4 +60,5 @@
     border: none;
     border-radius: 3px;
     outline: none;
+    min-width: 11em;
 }

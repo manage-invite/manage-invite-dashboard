@@ -14,17 +14,22 @@ const NavigationBar = () => {
 
     const login = () => {
         const clientID = process.env.REACT_APP_CLIENT_ID;
-        const redirectURI = process.env.REACT_APP_REDIRECT_URI;
+        const redirectURI = process.env.REACT_APP_REDIRECT_URI_AUTH;
         ensureSocketConnected().then(() => {
             console.log('[WS] Connected.');
             document.querySelector('#dash-button').blur();
             const loginURL = `https://discord.com/api/oauth2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectURI)}&response_type=code&scope=identify%20guilds&state=${socket.id}`;
             const loginWindow = window.open(loginURL, '_blank', '');
-            socket.on('init', () => {
+            socket.on('authInit', () => {
                 console.log('[WS] Authentication initialized.');
                 history.push('/servers');
                 setLoginLoading(true);
                 loginWindow.close();
+            });
+            socket.on('authFailed', () => {
+                console.log('[WS] Authentication failed.');
+                history.push('/');
+                setLoginLoading(false);
             });
             socket.on('login', (userData) => {
                 console.log(`[WS] Login payload received. User ID is ${userData.id}.`);
