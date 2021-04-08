@@ -34,26 +34,9 @@
     box-shadow: 0 0 10px rgb(20 21 23 / 74%);
 }
 
-@media (min-width: 1080px) {
-    .settings-title {
-        font-size: 2em;
-    }
-    .settings-welcome {
-        display: block;
-    }
-    .settings-plugins-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .settings-plugins-item {
-        padding: 20px;
-        margin-top: 20px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
-
 .settings-plugins-title {
     margin: 10px;
+    text-align: center;
 }
 
 .settings-plugins-icon {
@@ -69,4 +52,25 @@
 .settings-plugins-item-content {
     color: #c0c0cc;
     font-size: .9em;
+}
+
+@media (min-width: 1080px) {
+    .settings-plugins-title {
+        text-align: unset;
+    }
+    .settings-title {
+        font-size: 2em;
+    }
+    .settings-welcome {
+        display: block;
+    }
+    .settings-plugins-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .settings-plugins-item {
+        padding: 20px;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
