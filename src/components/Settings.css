@@ -5,6 +5,12 @@
 .settings-title {
     font-family: 'Inter' sans-serif;
     text-align: center;
+    font-size: 1.5em;
+}
+
+.settings-welcome {
+    text-align: center;
+    display: none;
 }
 
 .settings-plugins {
@@ -29,6 +35,12 @@
 }
 
 @media (min-width: 1080px) {
+    .settings-title {
+        font-size: 2em;
+    }
+    .settings-welcome {
+        display: block;
+    }
     .settings-plugins-container {
         grid-template-columns: repeat(3, 1fr);
     }

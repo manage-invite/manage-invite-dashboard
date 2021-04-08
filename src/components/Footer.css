@@ -1,6 +1,8 @@
 .footer {
     background-color: black;
-    height: 30px;
+    height: 50px;
     margin-top: 20px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }

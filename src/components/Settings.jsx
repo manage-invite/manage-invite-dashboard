@@ -6,10 +6,7 @@ const Settings = ({ serverName }) => (
     <div className="settings">
         <h1 className="settings-title">{serverName}</h1>
         <div className="settings-plugins">
-            <h3 style={{
-                textAlign: 'center'
-            }}
-            >
+            <h3 className="settings-welcome">
                 Welcome on the
                 {' '}
                 {serverName}
