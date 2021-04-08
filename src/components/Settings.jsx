@@ -3,6 +3,19 @@ import './Settings.css';
 
 const Settings = () => (
     <div className="settings">
+        <h1 className="settings-title">ManageInvite&apos;s Lounge</h1>
+        <div className="settings-plugins">
+            <h3 style={{
+                textAlign: 'center'
+            }}
+            >
+                Welcome on the ManageInvite configuration page! Feel free to join our
+                {' '}
+                <a href="https://manage-invite.xyz/discord">Discord server</a>
+                {' '}
+                if you need help!
+            </h3>
+        </div>
         <div className="settings-plugins">
             <h2 className="settings-plugins-title">Guild Plugins</h2>
             <div className="settings-plugins-container">

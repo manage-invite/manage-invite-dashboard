@@ -13,3 +13,9 @@ body {
 #root {
   height: 100%;
 }
+
+a {
+  color: #7289DA;
+  font-weight: bold;
+  text-decoration: none;
+}

@@ -2,6 +2,11 @@
     height: calc(70%);
 }
 
+.settings-title {
+    font-family: 'Inter' sans-serif;
+    text-align: center;
+}
+
 .settings-plugins {
     margin: 3em auto;
     max-width: 1080px;
