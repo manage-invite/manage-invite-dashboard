@@ -8,7 +8,7 @@ const Settings = () => (
             <div className="settings-plugins-container">
                 <div className="settings-plugins-item">
                     <div className="settings-plugins-icon">
-                        <img src="https://img.icons8.com/nolan/64/settings-3.png" alt="gear-icon" />
+                        <img src="https://img.icons8.com/fluent/48/000000/settings.png" alt="gear" />
                     </div>
                     <div>
                         <span className="settings-plugins-item-title">Settings</span>
@@ -20,7 +20,7 @@ const Settings = () => (
                 </div>
                 <div className="settings-plugins-item">
                     <div className="settings-plugins-icon">
-                        <img src="https://img.icons8.com/nolan/64/imessage.png" alt="msg-icon" />
+                        <img src="https://img.icons8.com/fluent/48/000000/appointment-reminders.png" alt="notify" />
                     </div>
                     <div>
                         <span className="settings-plugins-item-title">Logging messages</span>
@@ -32,7 +32,7 @@ const Settings = () => (
                 </div>
                 <div className="settings-plugins-item">
                     <div className="settings-plugins-icon">
-                        <img src="https://img.icons8.com/nolan/64/leaderboard.png" alt="lb-icon" />
+                        <img src="https://img.icons8.com/fluent/48/000000/trophy.png" alt="leaderboard" />
                     </div>
                     <div>
                         <span className="settings-plugins-item-title">Leaderboard</span>
@@ -44,7 +44,7 @@ const Settings = () => (
                 </div>
                 <div className="settings-plugins-item">
                     <div className="settings-plugins-icon">
-                        <img src="https://img.icons8.com/nolan/64/add.png" alt="add-icon" />
+                        <img src="https://img.icons8.com/fluent/48/000000/invite.png" alt="invite" />
                     </div>
                     <div>
                         <span className="settings-plugins-item-title">Invites</span>
@@ -56,7 +56,7 @@ const Settings = () => (
                 </div>
                 <div className="settings-plugins-item">
                     <div className="settings-plugins-icon">
-                        <img src="https://img.icons8.com/nolan/64/medal2.png" alt="medal-icon" />
+                        <img src="https://img.icons8.com/fluent/48/000000/prize.png" alt="reward" />
                     </div>
                     <div>
                         <span className="settings-plugins-item-title">Ranks Rewards</span>
@@ -68,13 +68,13 @@ const Settings = () => (
                 </div>
                 <div className="settings-plugins-item">
                     <div className="settings-plugins-icon">
-                        <img src="https://img.icons8.com/nolan/64/membership-card.png" alt="sub-icon" />
+                        <img src="https://img.icons8.com/fluent/48/000000/crown.png" alt="premium" />
                     </div>
                     <div>
-                        <span className="settings-plugins-item-title">Subscription</span>
+                        <span className="settings-plugins-item-title">Premium</span>
                         <p className="settings-plugins-item-content">
                             { /* eslint-disable-next-line max-len */ }
-                            Manage your subscription to access the bot, and generate your invoices!
+                            Manage your Premium subscription to access the bot, and generate your invoices!
                         </p>
                     </div>
                 </div>
