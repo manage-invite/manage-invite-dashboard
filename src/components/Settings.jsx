@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Settings.css';
 
-const Settings = () => (
+const Settings = ({ serverName }) => (
     <div className="settings">
-        <h1 className="settings-title">ManageInvite&apos;s Lounge</h1>
+        <h1 className="settings-title">{serverName}</h1>
         <div className="settings-plugins">
             <h3 style={{
                 textAlign: 'center'
             }}
             >
-                Welcome on the ManageInvite configuration page! Feel free to join our
+                Welcome on the
+                {' '}
+                {serverName}
+                {' '}
+                configuration page! Feel free to join our
                 {' '}
                 <a href="https://manage-invite.xyz/discord">Discord server</a>
                 {' '}
@@ -95,5 +100,9 @@ const Settings = () => (
         </div>
     </div>
 );
+
+Settings.propTypes = {
+    serverName: PropTypes.string.isRequired
+};
 
 export default Settings;

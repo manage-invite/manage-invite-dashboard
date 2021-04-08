@@ -31,7 +31,7 @@ const ServerSettings = () => {
 
     return (
         !cachedGuild ? loadingAnimation : (
-            <Settings />
+            <Settings serverName={cachedGuild.name} />
         )
     );
 };
