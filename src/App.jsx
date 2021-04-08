@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import NavigationBar from './components/NavigationBar';
 import store from './store';
 import Servers from './pages/Servers';
+import ServerSettings from './pages/ServerSettings';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Router>
                 <NavigationBar />
                 <Switch>
+                    <Route path="/servers/:id" component={ServerSettings} />
                     <Route path="/servers" component={Servers} />
                     <Route path="/" component={Home} />
                 </Switch>

@@ -1,0 +1,55 @@
+.settings {
+    height: calc(70%);
+}
+
+.settings-plugins {
+    margin: 3em auto;
+    max-width: 1080px;
+}
+
+.settings-plugins-container {
+    display: grid;
+}
+
+.settings-plugins-item {
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #313131;
+    display: flex;
+    box-shadow: 0 0 10px rgb(20 21 23 / 74%);
+}
+
+@media (min-width: 1080px) {
+    .settings-plugins-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .settings-plugins-item {
+        padding: 20px;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.settings-plugins-title {
+    margin: 10px;
+}
+
+.settings-plugins-icon {
+    padding-right: 20px;
+    width: 10em;
+}
+
+.settings-plugins-item-title {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.settings-plugins-item-content {
+    color: #c0c0cc;
+    font-size: .9em;
+}

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Server.css';
 import { useStoreActions, useStoreState } from 'easy-peasy';
+import { useHistory } from 'react-router-dom';
 import { socket, ensureSocketConnected } from '../socket';
 
 const Server = ({
@@ -11,6 +12,8 @@ const Server = ({
 }) => {
     const userGuildsCache = useStoreState((state) => state.userGuildsCache);
     const updateGuildCache = useStoreActions((actions) => actions.updateGuildCache);
+
+    const history = useHistory();
 
     const addButton = ((isPremium || isTrial) && !isAdded);
     const manageButton = isPremium && isAdded;
@@ -51,6 +54,8 @@ const Server = ({
                     addWindow.close();
                 });
             });
+        } else if (manageButton) {
+            history.push(`/servers/${serverID}`);
         }
     };
 
