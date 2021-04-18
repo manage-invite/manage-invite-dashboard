@@ -2,8 +2,8 @@ import { useStoreActions, useStoreState } from 'easy-peasy';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './NavigationBar.css';
-import LoadingAnimation from './LoadingAnimation';
-import { socket, ensureSocketConnected } from '../socket';
+import LoadingAnimation from '../utils/LoadingAnimation';
+import { socket, ensureSocketConnected } from '../../socket';
 
 const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.userSession.user);

@@ -2,9 +2,9 @@ import { useStoreState, useStoreActions, useStoreRehydrated } from 'easy-peasy';
 import React, { useEffect } from 'react';
 import { matchPath, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchUserGuilds } from '../api';
+import { fetchUserGuilds } from '../../api';
 import LoadingAnimation from './LoadingAnimation';
-import NotFound from '../pages/NotFound';
+import NotFound from '../../pages/NotFound';
 
 const ProtectedRoute = ({
     component: Component, fetchServers, serverPermissionsProtection, ...rest
