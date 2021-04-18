@@ -49,7 +49,7 @@ const ProtectedRoute = ({
                     return <Component />;
                 }
                 return (
-                    storeRehydrated ? <LoadingAnimation /> : <NotFound />
+                    !storeRehydrated ? <LoadingAnimation /> : <NotFound />
                 );
             }}
         />
