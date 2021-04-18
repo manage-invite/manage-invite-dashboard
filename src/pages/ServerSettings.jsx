@@ -12,7 +12,7 @@ const ServerSettings = () => {
 
     useEffect(() => {
         fetchGuildSettings(userJwt, id).then((data) => {
-            setGuildSettings(data);
+            setGuildSettings(data.data);
         });
     }, []);
 
@@ -20,7 +20,9 @@ const ServerSettings = () => {
 
     return (
         <div className="settings">
-            coucou
+            Préfixe:
+            {' '}
+            {guildSettings.prefix}
         </div>
     );
 };

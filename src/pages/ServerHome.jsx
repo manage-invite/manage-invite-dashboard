@@ -28,7 +28,7 @@ const ServerHome = () => {
             <div className="home-plugins">
                 <h2 className="home-plugins-title">Guild Plugins</h2>
                 <div className="home-plugins-container">
-                    <div className="home-plugins-item" onClick={() => history.push(`/servers/${id}/home`)} aria-hidden="true">
+                    <div className="home-plugins-item" onClick={() => history.push(`/servers/${id}/settings`)} aria-hidden="true">
                         <div className="home-plugins-icon">
                             <img src="https://img.icons8.com/fluent/48/000000/settings.png" alt="gear" />
                         </div>
