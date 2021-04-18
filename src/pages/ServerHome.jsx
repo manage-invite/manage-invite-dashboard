@@ -1,20 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useHistory, useParams } from 'react-router-dom';
 import './ServerHome.css';
+import { useStoreState } from 'easy-peasy';
 
-const ServerHome = ({ serverName }) => {
+const ServerHome = () => {
     const { id } = useParams();
+    const guildsCache = useStoreState((state) => state.guildsCache.cache);
+    const { name } = guildsCache.find((guild) => guild.id === id);
     const history = useHistory();
 
     return (
         <div className="settings">
-            <h1 className="home-title">{serverName}</h1>
+            <h1 className="home-title">{name}</h1>
             <div className="home-plugins">
                 <h3 className="home-welcome">
                     Welcome on the
                     {' '}
-                    {serverName}
+                    {name}
                     {' '}
                     configuration page! Feel free to join our
                     {' '}
@@ -102,10 +104,6 @@ const ServerHome = ({ serverName }) => {
             </div>
         </div>
     );
-};
-
-ServerHome.propTypes = {
-    serverName: PropTypes.string.isRequired
 };
 
 export default ServerHome;
