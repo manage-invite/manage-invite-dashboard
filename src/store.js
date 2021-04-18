@@ -2,20 +2,34 @@
 
 import { createStore, action, persist } from 'easy-peasy';
 
-const store = createStore(persist({
-    currentUser: null,
-    userGuildsCache: null,
-    updateUserGuildsCache: action((state, payload) => {
-        state.userGuildsCache = payload;
+const userSessionModel = {
+    user: null,
+    jwt: null,
+    updateUser: action((state, payload) => {
+        state.user = payload;
     }),
-    updateGuildCache: action((state, payload) => {
-        const newGuilds = [...state.userGuildsCache].filter((guild) => guild.id !== payload.id);
-        newGuilds.push(payload);
-        state.userGuildsCache = newGuilds;
-    }),
-    updateCurrentUser: action((state, payload) => {
-        state.currentUser = payload;
+    updateJwt: action((state, payload) => {
+        state.jwt = payload;
     })
-}));
+};
+
+const guildsCacheModel = {
+    loading: true,
+    cache: null,
+    update: action((state, payload) => {
+        state.loading = false;
+        state.cache = payload;
+    }),
+    updateGuild: action((state, payload) => {
+        const newGuilds = [...state.cache].filter((guild) => guild.id !== payload.id);
+        newGuilds.push(payload);
+        state.cache = newGuilds;
+    })
+};
+
+const store = createStore({
+    userSession: persist(userSessionModel),
+    guildsCache: guildsCacheModel
+});
 
 export default store;

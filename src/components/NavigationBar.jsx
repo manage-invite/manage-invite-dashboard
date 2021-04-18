@@ -6,15 +6,18 @@ import LoadingAnimation from './LoadingAnimation';
 import { socket, ensureSocketConnected } from '../socket';
 
 const NavigationBar = () => {
-    const currentUser = useStoreState((state) => state.currentUser);
-    const updateCurrentUser = useStoreActions((actions) => actions.updateCurrentUser);
-    const updateUserGuildsCache = useStoreActions((actions) => actions.updateUserGuildsCache);
+    const currentUser = useStoreState((state) => state.userSession.user);
+    const updateUser = useStoreActions((actions) => actions.userSession.updateUser);
+    const updateJwt = useStoreActions((actions) => actions.userSession.updateJwt);
+
+    const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
+
     const [loginLoading, setLoginLoading] = useState(false);
     const history = useHistory();
 
     const login = () => {
         const clientID = process.env.REACT_APP_CLIENT_ID;
-        const redirectURI = process.env.REACT_APP_REDIRECT_URI_AUTH;
+        const redirectURI = `${process.env.REACT_APP_API_URL}/auth`;
         ensureSocketConnected().then(() => {
             console.log('[WS] Connected.');
             document.querySelector('#dash-button').blur();
@@ -33,7 +36,11 @@ const NavigationBar = () => {
             });
             socket.on('login', (userData) => {
                 console.log(`[WS] Login payload received. User ID is ${userData.id}.`);
-                updateCurrentUser(userData);
+                updateUser(userData);
+            });
+            socket.on('jwt', (jwt) => {
+                console.log(`[WS] JWT received. Value: ${jwt}.`);
+                updateJwt(jwt);
             });
             socket.on('guilds', (guildsData) => {
                 console.log(`[WS] Guilds payload received. ${guildsData.length} guilds received.`);

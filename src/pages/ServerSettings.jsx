@@ -1,15 +1,19 @@
 import { useStoreState } from 'easy-peasy';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import LoadingAnimation from '../components/LoadingAnimation';
 import Settings from '../components/Settings';
 import NotFound from './NotFound';
 
 const ServerSettings = () => {
-    const userGuildsCache = useStoreState((state) => state.userGuildsCache);
+    const userGuildsLoading = useStoreState((state) => state.guildsCache.loading);
+    const userGuildsCache = useStoreState((state) => state.guildsCache.cache);
     const { id } = useParams();
     const cachedGuild = userGuildsCache?.find((guild) => guild.id === id);
 
-    return cachedGuild ? <Settings serverName={cachedGuild.name} /> : <NotFound />;
+    if (userGuildsLoading) return <LoadingAnimation />;
+    if (cachedGuild) return <Settings serverName={cachedGuild.name} />;
+    return <NotFound />;
 };
 
 export default ServerSettings;

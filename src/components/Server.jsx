@@ -10,8 +10,8 @@ import { socket, ensureSocketConnected } from '../socket';
 const Server = ({
     serverID, serverName, serverIconURL, isAdded, isPremium, isWaitingVerification, isTrial
 }) => {
-    const userGuildsCache = useStoreState((state) => state.userGuildsCache);
-    const updateGuildCache = useStoreActions((actions) => actions.updateGuildCache);
+    const userGuildsCache = useStoreState((state) => state.guildsCache.cache);
+    const updateGuildCache = useStoreActions((actions) => actions.guildsCache.updateGuild);
 
     const history = useHistory();
 
@@ -38,7 +38,7 @@ const Server = ({
     const handleManageClick = () => {
         if (addButton) {
             const clientID = process.env.REACT_APP_CLIENT_ID;
-            const redirectURI = process.env.REACT_APP_REDIRECT_URI_INVITE;
+            const redirectURI = `${process.env.REACT_APP_API_URL}/invite`;
             ensureSocketConnected().then(() => {
                 console.log('[WS] Connected.');
                 const requestID = btoa(+new Date()).substr(-7, 5);

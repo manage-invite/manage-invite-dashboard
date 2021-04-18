@@ -1,10 +1,23 @@
-import { useStoreState } from 'easy-peasy';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import FakeServer from '../components/FakeServer';
 import Server from '../components/Server';
+import { fetchUserGuilds } from '../api';
 
 const Servers = () => {
-    const userGuildsCache = useStoreState((state) => state.userGuildsCache);
+    const userJWT = useStoreState((state) => state.userSession.jwt);
+    const userGuildsCache = useStoreState((state) => state.guildsCache.cache);
+    const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
+
+    useEffect(() => {
+        if (userJWT) {
+            fetchUserGuilds(userJWT).then((guilds) => {
+                updateUserGuildsCache(guilds);
+            }).catch(() => {
+                // TODO: catch error?
+            });
+        }
+    }, [userJWT]);
 
     return (
         <div>
@@ -29,7 +42,6 @@ const Servers = () => {
                             // eslint-disable-next-line no-nested-ternary
                                 ? (a.isAdded === b.isAdded ? 0 : a.isAdded ? -1 : 1)
                                 : a.isPremium ? -1 : 1))
-                        .filter((guild) => guild.isAdmin)
                         .map((guild) => (
                             <Server key={guild.id} serverID={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} />
                         ))

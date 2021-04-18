@@ -9,22 +9,20 @@ import Servers from './pages/Servers';
 import ServerSettings from './pages/ServerSettings';
 import Footer from './components/Footer';
 
-function App() {
-    return (
-        <StoreProvider store={store}>
-            <Router>
-                <div className="page-content">
-                    <NavigationBar />
-                    <Switch>
-                        <Route path="/servers/:id" component={ServerSettings} />
-                        <Route path="/servers" component={Servers} />
-                        <Route path="/" component={Home} />
-                    </Switch>
-                </div>
-                <Footer />
-            </Router>
-        </StoreProvider>
-    );
-}
+const App = () => (
+    <StoreProvider store={store}>
+        <Router>
+            <div className="page-content">
+                <NavigationBar />
+                <Switch>
+                    <Route path="/servers/:id" component={ServerSettings} />
+                    <Route path="/servers" component={Servers} />
+                    <Route path="/" component={Home} />
+                </Switch>
+            </div>
+            <Footer />
+        </Router>
+    </StoreProvider>
+);
 
 export default App;
