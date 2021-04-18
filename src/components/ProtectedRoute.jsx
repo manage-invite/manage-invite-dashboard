@@ -14,7 +14,6 @@ const ProtectedRoute = ({
 
     const guildsCache = useStoreState((state) => state.guildsCache.cache);
     const guildsCacheFetched = useStoreState((state) => state.guildsCache.fetched);
-    // eslint-disable-next-line max-len
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
 
     const matchedPath = matchPath(window.location.pathname, {
