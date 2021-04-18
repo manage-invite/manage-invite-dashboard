@@ -14,10 +14,10 @@ const userSessionModel = {
 };
 
 const guildsCacheModel = {
-    loading: true,
+    fetched: false,
     cache: null,
     update: action((state, payload) => {
-        state.loading = false;
+        state.fetched = true;
         state.cache = payload;
     }),
     updateGuild: action((state, payload) => {

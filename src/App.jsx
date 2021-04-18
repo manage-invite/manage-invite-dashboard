@@ -8,6 +8,8 @@ import store from './store';
 import Servers from './pages/Servers';
 import ServerSettings from './pages/ServerSettings';
 import Footer from './components/Footer';
+import NotFound from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => (
     <StoreProvider store={store}>
@@ -15,9 +17,11 @@ const App = () => (
             <div className="page-content">
                 <NavigationBar />
                 <Switch>
-                    <Route path="/servers/:id" component={ServerSettings} />
-                    <Route path="/servers" component={Servers} />
-                    <Route path="/" component={Home} />
+                    <ProtectedRoute path="/servers/:id/settings" exact component={ServerSettings} fetchServers serverPermissionsProtection />
+                    <ProtectedRoute path="/servers/:id" exact component={ServerSettings} fetchServers serverPermissionsProtection />
+                    <ProtectedRoute path="/servers" exact component={Servers} />
+                    <Route path="/" exact component={Home} />
+                    <Route path="*" component={NotFound} />
                 </Switch>
             </div>
             <Footer />

@@ -64,3 +64,10 @@
         filter: none
     }
 }
+
+.loading-animation-centered {
+    width: 100%;
+    height: 70vh;
+    display: grid;
+    place-items: center;
+}
