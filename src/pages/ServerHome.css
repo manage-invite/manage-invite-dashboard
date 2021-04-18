@@ -1,28 +1,28 @@
-.settings {
+.home {
     height: calc(70%);
 }
 
-.settings-title {
+.home-title {
     font-family: 'Inter' sans-serif;
     text-align: center;
     font-size: 1.5em;
 }
 
-.settings-welcome {
+.home-welcome {
     text-align: center;
     display: none;
 }
 
-.settings-plugins {
+.home-plugins {
     margin: 3em auto;
     max-width: 1080px;
 }
 
-.settings-plugins-container {
+.home-plugins-container {
     display: grid;
 }
 
-.settings-plugins-item {
+.home-plugins-item {
     cursor: pointer;
     margin-left: 20px;
     margin-right: 20px;
@@ -34,39 +34,39 @@
     box-shadow: 0 0 10px rgb(20 21 23 / 74%);
 }
 
-.settings-plugins-title {
+.home-plugins-title {
     margin: 10px;
     text-align: center;
 }
 
-.settings-plugins-icon {
+.home-plugins-icon {
     padding-right: 25px;
 }
 
-.settings-plugins-item-title {
+.home-plugins-item-title {
     font-size: 1.2em;
     font-weight: 600;
 }
 
-.settings-plugins-item-content {
+.home-plugins-item-content {
     color: #c0c0cc;
     font-size: .9em;
 }
 
 @media (min-width: 1080px) {
-    .settings-plugins-title {
+    .home-plugins-title {
         text-align: unset;
     }
-    .settings-title {
+    .home-title {
         font-size: 2em;
     }
-    .settings-welcome {
+    .home-welcome {
         display: block;
     }
-    .settings-plugins-container {
+    .home-plugins-container {
         grid-template-columns: repeat(3, 1fr);
     }
-    .settings-plugins-item {
+    .home-plugins-item {
         padding: 20px;
         margin-top: 20px;
         margin-left: 10px;
