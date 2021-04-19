@@ -14,6 +14,8 @@ const request = (path, token, method, body) => new Promise((resolve, reject) => 
                 throw result;
             }
         });
+    }).catch((e) => {
+        reject(e);
     });
 });
 

@@ -1,10 +1,11 @@
 import { useStoreState, useStoreActions, useStoreRehydrated } from 'easy-peasy';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { matchPath, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchUserGuilds } from '../../api';
 import LoadingAnimation from './LoadingAnimation';
 import NotFound from '../../pages/NotFound';
+import Error from './Error';
 
 const ProtectedRoute = ({
     component: Component, fetchServers, serverPermissionsProtection, ...rest
@@ -16,6 +17,8 @@ const ProtectedRoute = ({
     const guildsCacheFetched = useStoreState((state) => state.guildsCache.fetched);
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
 
+    const [errored, setErrored] = useState(false);
+
     const matchedPath = matchPath(window.location.pathname, {
         path: '/servers/:id',
         exact: false,
@@ -23,14 +26,17 @@ const ProtectedRoute = ({
     });
     console.log(`Protected Route : Server ID: ${matchedPath?.params?.id}. Server Permissions Protection: ${serverPermissionsProtection}.`);
 
+    const refetchUserGuilds = () => {
+        setErrored(false);
+        fetchUserGuilds(userJwt).then((guilds) => {
+            updateUserGuildsCache(guilds);
+        }).catch(() => {
+            setErrored(true);
+        });
+    };
+
     useEffect(() => {
-        if (userJwt && storeRehydrated && !guildsCacheFetched) {
-            fetchUserGuilds(userJwt).then((guilds) => {
-                updateUserGuildsCache(guilds);
-            }).catch(() => {
-                // TODO: catch error?
-            });
-        }
+        if (userJwt && storeRehydrated && !guildsCacheFetched) refetchUserGuilds();
     }, [userJwt, storeRehydrated]);
 
     return (
@@ -39,7 +45,9 @@ const ProtectedRoute = ({
             {...rest}
             render={() => {
                 if (userJwt) {
-                    if (fetchServers && !guildsCacheFetched) return <LoadingAnimation />;
+                    if (fetchServers && !guildsCacheFetched) {
+                        return errored ? <Error retry={refetchUserGuilds} /> : <LoadingAnimation />;
+                    }
                     if (
                         serverPermissionsProtection
                         && guildsCacheFetched

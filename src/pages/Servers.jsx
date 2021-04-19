@@ -1,23 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import FakeServer from '../components/FakeServer';
 import Server from '../components/Server';
 import { fetchUserGuilds } from '../api';
+import Error from '../components/utils/Error';
 
 const Servers = () => {
     const userJWT = useStoreState((state) => state.userSession.jwt);
     const userGuildsCache = useStoreState((state) => state.guildsCache.cache);
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
 
+    const [errored, setErrored] = useState(false);
+
+    const refetchUserGuilds = () => {
+        setErrored(false);
+        fetchUserGuilds(userJWT).then((guilds) => {
+            updateUserGuildsCache(guilds);
+        }).catch(() => {
+            setErrored(true);
+        });
+    };
+
     useEffect(() => {
-        if (userJWT) {
-            fetchUserGuilds(userJWT).then((guilds) => {
-                updateUserGuildsCache(guilds);
-            }).catch(() => {
-                // TODO: catch error?
-            });
-        }
+        if (userJWT) refetchUserGuilds();
     }, [userJWT]);
+
+    if (errored) return <Error retry={refetchUserGuilds} />;
 
     return (
         <div>

@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
+:root {
+  --orange: rgb(255, 165, 0);
+}
+
 body {
   margin: 0;
   padding: 0;

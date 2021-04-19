@@ -18,11 +18,7 @@ const ServerHome = () => {
                     {' '}
                     {name}
                     {' '}
-                    configuration page! Feel free to join our
-                    {' '}
-                    <a href="https://manage-invite.xyz/discord">Discord server</a>
-                    {' '}
-                    if you need help!
+                    configuration page!
                 </h3>
             </div>
             <div className="home-plugins">
