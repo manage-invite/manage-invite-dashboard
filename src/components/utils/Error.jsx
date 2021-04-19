@@ -9,11 +9,10 @@ const Error = ({ retry }) => (
             Something went from when fetching data from the ManageInvite servers... 😕
             <Button
                 onClick={retry}
+                type="bordered"
                 style={{
                     margin: '0 auto',
-                    marginTop: '10px',
-                    border: '2px solid var(--orange)',
-                    color: 'white'
+                    marginTop: '10px'
                 }}
             >
                 Retry

@@ -5,3 +5,8 @@
     box-shadow: none;
     border: none;
 }
+
+.button.bordered {
+    color: white;
+    border: 2px solid var(--orange);
+}
