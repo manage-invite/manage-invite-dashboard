@@ -68,7 +68,7 @@ const NavigationBar = () => {
                 type="button"
                 className="logged-button"
             >
-                <LoadingAnimation size="10px" />
+                <LoadingAnimation size="10px" centered={false} />
             </button>
         );
     } else {

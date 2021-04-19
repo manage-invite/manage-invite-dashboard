@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './LoadingAnimation.css';
 
-const LoadingAnimation = ({ size }) => (
-    <div className="loading-animation-centered">
+const LoadingAnimation = ({ size, centered }) => (
+    <div
+        className="loading-animation-centered"
+        style={{
+            height: !centered ? '' : '70vh'
+        }}
+    >
         <div className="ball-pulse smallBall">
             <div style={{ width: size, height: size }} />
             <div style={{ width: size, height: size }} />
@@ -13,11 +18,13 @@ const LoadingAnimation = ({ size }) => (
 );
 
 LoadingAnimation.defaultProps = {
-    size: '15px'
+    size: '15px',
+    centered: null
 };
 
 LoadingAnimation.propTypes = {
-    size: PropTypes.string
+    size: PropTypes.string,
+    centered: PropTypes.bool
 };
 
 export default LoadingAnimation;

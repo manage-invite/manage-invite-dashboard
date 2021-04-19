@@ -46,7 +46,9 @@ const ProtectedRoute = ({
             render={() => {
                 if (userJwt) {
                     if (fetchServers && !guildsCacheFetched) {
-                        return errored ? <Error retry={refetchUserGuilds} /> : <LoadingAnimation />;
+                        return errored
+                            ? <Error retry={refetchUserGuilds} />
+                            : <LoadingAnimation centered />;
                     }
                     if (
                         serverPermissionsProtection
