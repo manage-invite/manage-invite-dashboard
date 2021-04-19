@@ -1,8 +1,8 @@
 .footer {
     background-color: black;
-    height: 50px;
-    margin-top: 20px;
-    padding: 10px;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
 }

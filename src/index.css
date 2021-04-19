@@ -25,7 +25,7 @@ a {
 }
 
 .page-content {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 5rem);
 }
 
 ::-webkit-scrollbar {
