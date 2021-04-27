@@ -12,3 +12,13 @@
     background-color: #0a0a0a;
     border-radius: 0.5rem;
 }
+
+.settings-inputs {
+    display: grid;
+}
+
+@media (min-width: 1200px) {
+    .settings-inputs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

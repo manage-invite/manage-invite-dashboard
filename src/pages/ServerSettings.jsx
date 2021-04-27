@@ -55,26 +55,51 @@ const ServerSettings = () => {
                 >
                     <h2>Server Settings</h2>
                     <div className="settings-form">
-                        <div>
-                            <h3>Command Prefix</h3>
-                            <Input value={guildPrefix} onChange={onPrefixChange} />
+                        <div className="settings-inputs">
+                            <div>
+                                <h3>Command Language</h3>
+                                <Select
+                                    options={[
+                                        {
+                                            label: '🇫🇷 French',
+                                            value: 'fr-FR'
+                                        },
+                                        {
+                                            label: '🇺🇸 English (US)',
+                                            value: 'en-US'
+                                        }
+                                    ]}
+                                    defaultValue="fr-FR"
+                                />
+                            </div>
+                            <div>
+                                <h3>Command Prefix</h3>
+                                <Input
+                                    value={guildPrefix}
+                                    onChange={onPrefixChange}
+                                    style={{
+                                        width: '100%'
+                                    }}
+                                />
+                            </div>
+                            <div>
+                                <h3>Command Channel</h3>
+                                <Select
+                                    placeholder="No specific channel"
+                                    options={[]}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <h3>Command Language</h3>
-                            <Select
-                                options={[
-                                    {
-                                        label: '🇫🇷 French',
-                                        value: 'fr-FR'
-                                    },
-                                    {
-                                        label: '🇺🇸 English (US)',
-                                        value: 'en-US'
-                                    }
-                                ]}
-                                defaultValue="fr-FR"
-                            />
-                        </div>
+                        <Button style={{
+                            marginTop: '1rem',
+                            padding: '1rem',
+                            width: '30%',
+                            backgroundColor: '#519872',
+                            color: 'white'
+                        }}
+                        >
+                            Update
+                        </Button>
                     </div>
                 </div>
             </div>

@@ -52,7 +52,7 @@
 
 .home-plugins-item-title {
     font-size: 1.2em;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .home-plugins-item-content {
@@ -60,7 +60,7 @@
     font-size: 0.9em;
 }
 
-@media (min-width: 70rem) {
+@media (min-width: 1200px) {
     .home-plugins-title {
         text-align: unset;
     }
