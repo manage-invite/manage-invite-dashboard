@@ -19,7 +19,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     onClick: () => {},
-    type: 'bordered'
+    type: ''
 };
 
 export default Button;

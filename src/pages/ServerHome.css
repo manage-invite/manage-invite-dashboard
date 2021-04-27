@@ -7,6 +7,14 @@
     font-size: 1.5em;
 }
 
+
+.home-server-info {
+    align-items: unset;
+    justify-content: start;
+    text-align: center;
+    margin: 1rem;
+}
+
 .home-welcome {
     text-align: center;
     display: none;
@@ -70,5 +78,9 @@
         margin-top: 1.25rem;
         margin-left: 0.6rem;
         margin-right: 0.6rem;
+    }
+    .home-server-info {
+        display: flex;
+        align-items: center;
     }
 }
