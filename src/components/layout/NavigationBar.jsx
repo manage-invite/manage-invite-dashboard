@@ -68,7 +68,7 @@ const NavigationBar = () => {
                 type="button"
                 className="logged-button"
             >
-                <LoadingAnimation size="10px" centered={false} />
+                <LoadingAnimation size="0.625rem" centered={false} />
             </button>
         );
     } else {
@@ -85,7 +85,7 @@ const NavigationBar = () => {
                     height="25px"
                     style={{
                         borderRadius: '50%',
-                        marginRight: '10px'
+                        marginRight: '0.625rem'
                     }}
                 />
                 {currentUser.username}

@@ -4,7 +4,6 @@
 
 .home-title {
     font-family: 'Inter' sans-serif;
-    text-align: center;
     font-size: 1.5em;
 }
 
@@ -15,7 +14,7 @@
 
 .home-plugins {
     margin: 3em auto;
-    max-width: 1080px;
+    max-width: 70rem;
 }
 
 .home-plugins-container {
@@ -24,23 +23,23 @@
 
 .home-plugins-item {
     cursor: pointer;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 4px;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
     background-color: #313131;
     display: flex;
-    box-shadow: 0 0 10px rgb(20 21 23 / 74%);
+    box-shadow: 0 0 0.6rem rgb(20 21 23 / 74%);
 }
 
 .home-plugins-title {
-    margin: 10px;
+    margin: 0.6rem;
     text-align: center;
 }
 
 .home-plugins-icon {
-    padding-right: 25px;
+    padding-right: 1.5rem;
 }
 
 .home-plugins-item-title {
@@ -50,15 +49,15 @@
 
 .home-plugins-item-content {
     color: #c0c0cc;
-    font-size: .9em;
+    font-size: 0.9em;
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 70rem) {
     .home-plugins-title {
         text-align: unset;
     }
     .home-title {
-        font-size: 2em;
+        font-size: 1.5em;
     }
     .home-welcome {
         display: block;
@@ -67,9 +66,9 @@
         grid-template-columns: repeat(3, 1fr);
     }
     .home-plugins-item {
-        padding: 20px;
-        margin-top: 20px;
-        margin-left: 10px;
-        margin-right: 10px;
+        padding: 1.25rem;
+        margin-top: 1.25rem;
+        margin-left: 0.6rem;
+        margin-right: 0.6rem;
     }
 }

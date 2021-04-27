@@ -1,3 +1,8 @@
 .settings {
     height: calc(70%);
 }
+
+.settings-content {
+    margin: 3em auto;
+    max-width: 70rem;
+}

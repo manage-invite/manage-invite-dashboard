@@ -2,39 +2,39 @@
     display: flex;
     align-items: center;
     flex: 1 1;
-    height: 60px;
+    height: 3.5rem;
     padding: 1em;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     opacity: 1;
 }
 
 .fake-server-icon {
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     background: #292a2b;
     overflow: hidden;
 }
 
 .fake-server-name, .fake-server-button {
-    border-radius: 5px;
+    border-radius: 0.3rem;
     background: #292a2b;
     overflow: hidden;
 }
 
 .fake-server-name {
     flex-shrink: 1;
-    width: 270px;
-    height: 15px;
+    width: 16.8rem;
+    height: 0.9rem;
     margin: 0 1em;
 }
 
 .fake-server-button {
     flex-shrink: 0;
     margin-left: auto;
-    width: 125px;
-    height: 40px;
+    width: 7.8rem;
+    height: 2.5rem;
 }
 
 .bip {
@@ -42,7 +42,7 @@
     color: #fff;
     height: 100%;
     width: 30%;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     animation: 700ms linear 0ms infinite normal none running move;
 }
 

@@ -4,7 +4,7 @@ nav {
 	right: 0;
 	top: 0;
 	padding: 0 5%;
-	height: 100px;
+	height: 6.25rem;
     background-color: hsl(0, 0%, 4%);
 }
 nav .logo {
@@ -13,10 +13,10 @@ nav .logo {
 	height: 100%;
 	display: flex;
 	align-items: center;
-	font-size: 24px;
+	font-size: 1.5rem;
 }
 nav .logo .img {
-    margin-right: 20px;
+    margin-right: 1.25rem;
 }
 nav .links {
 	float: right;
@@ -38,40 +38,40 @@ nav a {
 nav .links a,button {
 	display: block;
 	padding: 1em;
-	font-size: 16px;
+	font-size: 1rem;
 	font-weight: bold;
 }
 #nav-toggle {
 	position: absolute;
-	top: -100px;
+	top: -6.25rem;
 }
 nav .icon-burger {
 	display: none;
 	position: absolute;
 	right: 5%;
-	top: 50px;
+	top:3.1rem;
 	transform: translateY(-50%);
 }
 nav .icon-burger .line {
-	top: 50px;
-	width: 30px;
-	height: 5px;
+	top:3.1rem;
+	width: 1.875rem;
+	height:0.3rem;
 	background-color: white;
-	margin: 5px;
-	border-radius: 3px;
+	margin:0.3rem;
+	border-radius: 0.188rem;
 	transition: all .3s ease-in-out;
 }
 
 #dash-button {
 	background-color: transparent;
     outline: none;
-    padding: 10px 12px !important;
-    border: 2px solid rgb(255, 165, 0);
+    padding: 0.625rem 0.75rem !important;
+    border: 0.1rem solid rgb(255, 165, 0);
     color: white;
-    border-radius: 5px;
+    border-radius:0.3rem;
     transition: all 180ms ease-out 0s;
     cursor: pointer;
-	min-width: 140px;
+	min-width: 8.75rem;
 }
 
 #dash-button:hover {
@@ -89,7 +89,7 @@ nav .icon-burger .line {
 	nav .logo {
 		float: none;
 		width: auto;
-        padding-left: 10px;
+        padding-left: 0.625rem;
 	}
 	nav .links {
 		float: none;
@@ -97,7 +97,7 @@ nav .icon-burger .line {
 		z-index: 9;
 		left: 0;
 		right: 0;
-		top: 100px;
+		top: 6.25rem;
 		bottom: 100%;
 		width: auto;
 		height: auto;
@@ -109,22 +109,22 @@ nav .icon-burger .line {
 		transition: all .5s ease-in-out;
 	}
 	.dash-button {
-		margin-bottom: 20px;
+		margin-bottom: 1.25rem;
 	}
 	nav .links a,button {
-		font-size: 20px;
+		font-size: 1.25rem;
 	}
 	nav :checked ~ .links {
-		bottom: 250px;
+		bottom: 15.6rem;
 	}
 	nav .icon-burger {
 		display: block;
 	}
 	nav :checked ~ .icon-burger .line:nth-child(1) {
-		transform: translateY(10px) rotate(225deg);
+		transform: translateY(0.625rem) rotate(225deg);
 	}
 	nav :checked ~ .icon-burger .line:nth-child(3) {
-		transform: translateY(-10px) rotate(-225deg);
+		transform: translateY(-0.625rem) rotate(-225deg);
 	}
 	nav :checked ~ .icon-burger .line:nth-child(2) {
 		opacity: 0;

@@ -18,7 +18,7 @@ const LoadingAnimation = ({ size, centered }) => (
 );
 
 LoadingAnimation.defaultProps = {
-    size: '15px',
+    size: '1rem',
     centered: null
 };
 
