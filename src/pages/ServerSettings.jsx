@@ -5,6 +5,7 @@ import { fetchGuildSettings } from '../api';
 import Button from '../components/lib/Button';
 import Input from '../components/lib/Input';
 import LoadingAnimation from '../components/utils/LoadingAnimation';
+import Select from '../components/lib/Select';
 import './ServerSettings.css';
 
 const ServerSettings = () => {
@@ -14,9 +15,16 @@ const ServerSettings = () => {
     const { name } = guildsCache.find((guild) => guild.id === id);
     const [guildSettings, setGuildSettings] = useState(null);
 
+    const [guildPrefix, setGuildPrefix] = useState(null);
+
+    const onPrefixChange = (e) => {
+        setGuildPrefix(e.target.value);
+    };
+
     useEffect(() => {
         fetchGuildSettings(userJwt, id).then((data) => {
             setGuildSettings(data.data);
+            setGuildPrefix(data.data.prefix);
         });
     }, []);
 
@@ -49,11 +57,23 @@ const ServerSettings = () => {
                     <div className="settings-form">
                         <div>
                             <h3>Command Prefix</h3>
-                            <Input />
+                            <Input value={guildPrefix} onChange={onPrefixChange} />
                         </div>
                         <div>
                             <h3>Command Language</h3>
-                            <Input />
+                            <Select
+                                options={[
+                                    {
+                                        label: '🇫🇷 French',
+                                        value: 'fr-FR'
+                                    },
+                                    {
+                                        label: '🇺🇸 English (US)',
+                                        value: 'en-US'
+                                    }
+                                ]}
+                                defaultValue="fr-FR"
+                            />
                         </div>
                     </div>
                 </div>
