@@ -29,7 +29,7 @@ const Server = ({
         manageButtonColor = '#3eb386';
     } else if (manageButton) {
         manageButtonText = 'Manage';
-        manageButtonColor = '#3eb386';
+        manageButtonColor = '#ff9100';
     } else if (manageTrialButton) {
         manageButtonText = 'Manage (trial)';
         manageButtonColor = '#3eb386';
