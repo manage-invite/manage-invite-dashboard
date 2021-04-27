@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 :root {
-  --orange: rgb(255, 165, 0);
+  --orange: #ffa500;
 }
 
 body {
@@ -29,7 +29,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0.5rem;
   background-color: none;
 }
 
