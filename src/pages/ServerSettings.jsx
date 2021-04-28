@@ -2,7 +2,9 @@ import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { fetchAvailableLanguages, fetchGuildSettings, updateGuildSettings } from '../api';
+import {
+    fetchAvailableLanguages, fetchGuildChannels, fetchGuildSettings, updateGuildSettings
+} from '../api';
 import Button from '../components/lib/Button';
 import Input from '../components/lib/Input';
 import LoadingAnimation from '../components/utils/LoadingAnimation';
@@ -23,6 +25,7 @@ const ServerSettings = () => {
     const [cmdChannel, setCmdChannel] = useState(null);
 
     const [languagesOptions, setLanguagesOptions] = useState([]);
+    const [channelsOptions, setChannelsOptions] = useState([]);
 
     const onUpdate = () => {
         setUpdating(true);
@@ -48,12 +51,25 @@ const ServerSettings = () => {
         setLanguage(selectedLanguage.value);
     };
 
+    const onCmdChannelChange = (selectedChannel) => {
+        setCmdChannel(selectedChannel.value);
+    };
+
     useEffect(() => {
-        fetchAvailableLanguages().then((languages) => {
-            setLanguagesOptions(languages.map((l) => ({
+        fetchAvailableLanguages().then((data) => {
+            setLanguagesOptions(data.data.map((l) => ({
                 label: l.aliases[0] || l.nativeName,
                 value: l.name
             })));
+        });
+        fetchGuildChannels(userJwt, id).then((data) => {
+            setChannelsOptions([{
+                label: 'No channel',
+                value: null
+            }, ...data.data.map((c) => ({
+                label: c.name,
+                value: c.id
+            }))]);
         });
         fetchGuildSettings(userJwt, id).then((data) => {
             setPrefix(data.data.prefix);
@@ -105,9 +121,11 @@ const ServerSettings = () => {
                                     <div className="setting-form">
                                         <h3>Command Channel</h3>
                                         <Select
+                                            value={cmdChannel}
                                             defaultValue={cmdChannel}
                                             placeholder="No specific channel"
-                                            options={[]}
+                                            options={channelsOptions}
+                                            onChange={onCmdChannelChange}
                                         />
                                     </div>
                                     <div className="setting-form">

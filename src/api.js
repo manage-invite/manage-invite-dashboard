@@ -21,7 +21,15 @@ const request = (path, token, method = 'GET', body) => new Promise((resolve, rej
     });
 });
 
-export const fetchUserGuilds = (jwt) => request('user/guilds', jwt, 'GET');
-export const fetchGuildSettings = (jwt, guildID) => request(`guilds/${guildID}/settings`, jwt, 'GET');
+/* User */
+export const fetchUserGuilds = (jwt) => request('user/guilds', jwt);
+
+/* Guild */
+export const fetchGuildChannels = (jwt, guildID) => request(`guilds/${guildID}/channels`, jwt);
+
+/* Guild settings */
+export const fetchGuildSettings = (jwt, guildID) => request(`guilds/${guildID}/settings`, jwt);
 export const updateGuildSettings = (jwt, guildID, body) => request(`guilds/${guildID}/settings`, jwt, 'POST', body);
+
+/* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');

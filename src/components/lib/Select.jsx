@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-const SelectComp = ({ options, defaultValue, onChange }) => (
+const SelectComp = ({
+    options, defaultValue, onChange, value, placeholder
+}) => (
     <div style={{
         marginRight: '2rem'
     }}
@@ -41,8 +43,10 @@ const SelectComp = ({ options, defaultValue, onChange }) => (
                 })
             }}
             onChange={onChange}
+            value={value ? options.find((opt) => opt.value === value) : null}
             defaultValue={defaultValue ? options.find((opt) => opt.value === defaultValue) : null}
             options={options}
+            placeholder={placeholder}
         />
     </div>
 );
@@ -53,12 +57,16 @@ SelectComp.propTypes = {
         value: PropTypes.string
     })).isRequired,
     defaultValue: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types, react/require-default-props
+    value: PropTypes.any,
+    placeholder: PropTypes.string
 };
 
 SelectComp.defaultProps = {
     defaultValue: null,
-    onChange: () => {}
+    onChange: () => {},
+    placeholder: 'Select...'
 };
 
 export default SelectComp;
