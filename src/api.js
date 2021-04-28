@@ -1,7 +1,9 @@
 const request = (path, token, method, body) => new Promise((resolve, reject) => {
     fetch(`${process.env.REACT_APP_API_URL}/${path}`, {
+        method,
         headers: {
-            authorization: `Dash ${token}`
+            authorization: `Dash ${token}`,
+            'Content-Type': 'application/json'
         },
         body: method === 'POST' ? JSON.stringify(body) : undefined
     }).then((res) => {
@@ -21,3 +23,4 @@ const request = (path, token, method, body) => new Promise((resolve, reject) => 
 
 export const fetchUserGuilds = (jwt) => request('user/guilds', jwt, 'GET');
 export const fetchGuildSettings = (jwt, guildID) => request(`guilds/${guildID}/settings`, jwt, 'GET');
+export const updateGuildSettings = (jwt, guildID, body) => request(`guilds/${guildID}/settings`, jwt, 'POST', body);

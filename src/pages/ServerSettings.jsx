@@ -1,7 +1,7 @@
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { fetchGuildSettings } from '../api';
+import { fetchGuildSettings, updateGuildSettings } from '../api';
 import Button from '../components/lib/Button';
 import Input from '../components/lib/Input';
 import LoadingAnimation from '../components/utils/LoadingAnimation';
@@ -13,22 +13,41 @@ const ServerSettings = () => {
     const { id } = useParams();
     const guildsCache = useStoreState((state) => state.guildsCache.cache);
     const { name } = guildsCache.find((guild) => guild.id === id);
-    const [guildSettings, setGuildSettings] = useState(null);
 
-    const [guildPrefix, setGuildPrefix] = useState(null);
+    const [updating, setUpdating] = useState(false);
+
+    const [guildSettingsFetched, setGuildSettingsFetched] = useState(false);
+    const [prefix, setPrefix] = useState(null);
+    const [language, setLanguage] = useState(null);
+    const [cmdChannel, setCmdChannel] = useState(null);
+
+    const onUpdate = () => {
+        setUpdating(true);
+        updateGuildSettings(userJwt, id, {
+            prefix,
+            language,
+            cmdChannel
+        }).then((data) => {
+            setPrefix(data.data.prefix);
+            setLanguage(data.data.language);
+            setCmdChannel(data.data.cmdChannel);
+            setUpdating(false);
+            setGuildSettingsFetched(true);
+        });
+    };
 
     const onPrefixChange = (e) => {
-        setGuildPrefix(e.target.value);
+        setPrefix(e.target.value);
     };
 
     useEffect(() => {
         fetchGuildSettings(userJwt, id).then((data) => {
-            setGuildSettings(data.data);
-            setGuildPrefix(data.data.prefix);
+            setPrefix(data.data.prefix);
+            setLanguage(data.data.language);
+            setCmdChannel(data.data.cmdChannel);
+            setGuildSettingsFetched(true);
         });
     }, []);
-
-    if (!guildSettings) return <LoadingAnimation centered />;
 
     return (
         <div className="settings">
@@ -56,49 +75,58 @@ const ServerSettings = () => {
                     <h2>Server Settings</h2>
                     <div className="settings-form">
                         <div className="settings-inputs">
-                            <div>
-                                <h3>Command Language</h3>
-                                <Select
-                                    options={[
-                                        {
-                                            label: '🇫🇷 French',
-                                            value: 'fr-FR'
-                                        },
-                                        {
-                                            label: '🇺🇸 English (US)',
-                                            value: 'en-US'
-                                        }
-                                    ]}
-                                    defaultValue="fr-FR"
-                                />
-                            </div>
-                            <div>
-                                <h3>Command Prefix</h3>
-                                <Input
-                                    value={guildPrefix}
-                                    onChange={onPrefixChange}
-                                    style={{
-                                        width: '100%'
-                                    }}
-                                />
-                            </div>
-                            <div>
-                                <h3>Command Channel</h3>
-                                <Select
-                                    placeholder="No specific channel"
-                                    options={[]}
-                                />
-                            </div>
+                            {guildSettingsFetched ? (
+                                <>
+                                    <div className="setting-form">
+                                        <h3>Command Language</h3>
+                                        <Select
+                                            options={[
+                                                {
+                                                    label: '🇫🇷 French',
+                                                    value: 'fr-FR'
+                                                },
+                                                {
+                                                    label: '🇺🇸 English (US)',
+                                                    value: 'en-US'
+                                                }
+                                            ]}
+                                            onChange={(v) => setLanguage(v)}
+                                        />
+                                    </div>
+                                    <div className="setting-form">
+                                        <h3>Command Channel</h3>
+                                        <Select
+                                            defaultValue={cmdChannel}
+                                            placeholder="No specific channel"
+                                            options={[]}
+                                        />
+                                    </div>
+                                    <div className="setting-form">
+                                        <h3>Command Prefix</h3>
+                                        <Input
+                                            value={prefix}
+                                            onChange={onPrefixChange}
+                                        />
+                                    </div>
+                                </>
+                            ) : <LoadingAnimation />}
                         </div>
-                        <Button style={{
-                            marginTop: '1rem',
-                            padding: '1rem',
-                            width: '30%',
-                            backgroundColor: '#519872',
-                            color: 'white'
-                        }}
+                        <Button
+                            style={{
+                                marginTop: '2rem',
+                                backgroundColor: '#519872',
+                                color: 'white'
+                            }}
+                            onClick={onUpdate}
                         >
-                            Update
+                            <p style={{
+                                fontWeight: '500',
+                                margin: '1rem'
+                            }}
+                            >
+                                {updating ? <LoadingAnimation size={9} /> : 'Update'}
+
+                            </p>
                         </Button>
                     </div>
                 </div>
