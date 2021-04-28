@@ -1,7 +1,8 @@
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { fetchGuildSettings, updateGuildSettings } from '../api';
+import { toast } from 'react-toastify';
+import { fetchAvailableLanguages, fetchGuildSettings, updateGuildSettings } from '../api';
 import Button from '../components/lib/Button';
 import Input from '../components/lib/Input';
 import LoadingAnimation from '../components/utils/LoadingAnimation';
@@ -21,6 +22,8 @@ const ServerSettings = () => {
     const [language, setLanguage] = useState(null);
     const [cmdChannel, setCmdChannel] = useState(null);
 
+    const [languagesOptions, setLanguagesOptions] = useState([]);
+
     const onUpdate = () => {
         setUpdating(true);
         updateGuildSettings(userJwt, id, {
@@ -28,6 +31,7 @@ const ServerSettings = () => {
             language,
             cmdChannel
         }).then((data) => {
+            toast.success('Guild settings updated!');
             setPrefix(data.data.prefix);
             setLanguage(data.data.language);
             setCmdChannel(data.data.cmdChannel);
@@ -40,7 +44,17 @@ const ServerSettings = () => {
         setPrefix(e.target.value);
     };
 
+    const onLanguageChange = (selectedLanguage) => {
+        setLanguage(selectedLanguage.value);
+    };
+
     useEffect(() => {
+        fetchAvailableLanguages().then((languages) => {
+            setLanguagesOptions(languages.map((l) => ({
+                label: l.aliases[0] || l.nativeName,
+                value: l.name
+            })));
+        });
         fetchGuildSettings(userJwt, id).then((data) => {
             setPrefix(data.data.prefix);
             setLanguage(data.data.language);
@@ -63,9 +77,11 @@ const ServerSettings = () => {
                             color: 'white'
                         }}
                     >
-                        Back to
-                        {' '}
-                        {name}
+                        <>
+                            Back to
+                            {' '}
+                            {name}
+                        </>
                     </Button>
                 </Link>
                 <div style={{
@@ -80,17 +96,10 @@ const ServerSettings = () => {
                                     <div className="setting-form">
                                         <h3>Command Language</h3>
                                         <Select
-                                            options={[
-                                                {
-                                                    label: '🇫🇷 French',
-                                                    value: 'fr-FR'
-                                                },
-                                                {
-                                                    label: '🇺🇸 English (US)',
-                                                    value: 'en-US'
-                                                }
-                                            ]}
-                                            onChange={(v) => setLanguage(v)}
+                                            value={language}
+                                            defaultValue={language}
+                                            options={languagesOptions}
+                                            onChange={onLanguageChange}
                                         />
                                     </div>
                                     <div className="setting-form">
@@ -119,14 +128,13 @@ const ServerSettings = () => {
                             }}
                             onClick={onUpdate}
                         >
-                            <p style={{
+                            <div style={{
                                 fontWeight: '500',
                                 margin: '1rem'
                             }}
                             >
-                                {updating ? <LoadingAnimation size={9} /> : 'Update'}
-
-                            </p>
+                                {updating ? <LoadingAnimation size="0.5rem" /> : 'Update'}
+                            </div>
                         </Button>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { StoreProvider } from 'easy-peasy';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home';
 import NavigationBar from './components/layout/NavigationBar';
 import store from './store';
@@ -24,6 +25,7 @@ const App = () => (
                     <Route path="/" exact component={Home} />
                     <Route path="*" component={NotFound} />
                 </Switch>
+                <ToastContainer position="bottom-right" />
             </div>
             <Footer />
         </Router>

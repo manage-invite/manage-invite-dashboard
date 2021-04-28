@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-const SelectComp = ({ options, defaultValue }) => (
+const SelectComp = ({ options, defaultValue, onChange }) => (
     <div style={{
         marginRight: '2rem'
     }}
@@ -40,6 +40,7 @@ const SelectComp = ({ options, defaultValue }) => (
                     }
                 })
             }}
+            onChange={onChange}
             defaultValue={defaultValue ? options.find((opt) => opt.value === defaultValue) : null}
             options={options}
         />
@@ -51,11 +52,13 @@ SelectComp.propTypes = {
         label: PropTypes.string,
         value: PropTypes.string
     })).isRequired,
-    defaultValue: PropTypes.string
+    defaultValue: PropTypes.string,
+    onChange: PropTypes.func
 };
 
 SelectComp.defaultProps = {
-    defaultValue: null
+    defaultValue: null,
+    onChange: () => {}
 };
 
 export default SelectComp;

@@ -1,4 +1,4 @@
-const request = (path, token, method, body) => new Promise((resolve, reject) => {
+const request = (path, token, method = 'GET', body) => new Promise((resolve, reject) => {
     fetch(`${process.env.REACT_APP_API_URL}/${path}`, {
         method,
         headers: {
@@ -24,3 +24,4 @@ const request = (path, token, method, body) => new Promise((resolve, reject) => 
 export const fetchUserGuilds = (jwt) => request('user/guilds', jwt, 'GET');
 export const fetchGuildSettings = (jwt, guildID) => request(`guilds/${guildID}/settings`, jwt, 'GET');
 export const updateGuildSettings = (jwt, guildID, body) => request(`guilds/${guildID}/settings`, jwt, 'POST', body);
+export const fetchAvailableLanguages = () => request('meta/languages');

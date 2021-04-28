@@ -13,7 +13,10 @@ const Button = ({
 
 Button.propTypes = {
     onClick: PropTypes.func,
-    children: PropTypes.elementType.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired,
     type: PropTypes.string
 };
 

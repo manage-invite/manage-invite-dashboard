@@ -44,3 +44,7 @@ a {
 ::-webkit-scrollbar-thumb {
   background-color: #f0f8ff;
 }
+
+.Toastify__toast--success {
+  background-color: #62A87C !important;
+}
