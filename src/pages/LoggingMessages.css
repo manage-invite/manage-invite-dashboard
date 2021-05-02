@@ -1,5 +1,6 @@
 .logging-message-container {
     display: grid;
+    column-gap: 3rem;
 }
 
 @media (min-width: 1200px) {

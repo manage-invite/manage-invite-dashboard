@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import Tab from './Tab';
 import './Tabs.scss';
 
-const Tabs = ({ children, onTabChange }) => {
+const Tabs = ({ children }) => {
     const [activeTab, setActiveTab] = useState(children[0].props.label);
 
     const onClickTabItem = (tab) => {
         setActiveTab(tab);
-        onTabChange(tab);
     };
 
     return (
@@ -38,8 +37,7 @@ const Tabs = ({ children, onTabChange }) => {
 };
 
 Tabs.propTypes = {
-    children: PropTypes.instanceOf(Array).isRequired,
-    onTabChange: PropTypes.func.isRequired
+    children: PropTypes.instanceOf(Array).isRequired
 };
 
 export default Tabs;
