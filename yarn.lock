@@ -1189,6 +1189,15 @@
   resolved "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-10.1.0.tgz"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@danktuary/react-discord-message@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@danktuary/react-discord-message/-/react-discord-message-1.0.2.tgz#e4528f696a57eb940cc15e2412a0487650d634f1"
+  integrity sha512-dMpn9OnJvsH7zoPjRRTbOLD5q8s9yrNhL0MXyP1F9vs8FeJcV/KJ+gu+fUx+wecMiLUZdTdJaMN6K+GKbq9/IA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    hex-to-rgba "^1.0.2"
+    prop-types "^15.5.4"
+
 "@emotion/cache@^11.0.0", "@emotion/cache@^11.1.3":
   version "11.1.3"
   resolved "https://registry.npmjs.org/@emotion/cache/-/cache-11.1.3.tgz#c7683a9484bcd38d5562f2b9947873cf66829afd"
@@ -5743,6 +5752,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npmjs.org/hex-color-regex/-/hex-color-regex-1.1.0.tgz"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
+hex-to-rgba@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/hex-to-rgba/-/hex-to-rgba-1.0.2.tgz#1273dc05a499ddc955b80220ae04dcf542decfec"
+  integrity sha512-fL+4NFccs86iOuDnFl1Mhyn471qTPAkpE7k39+JYGPMB3+S9LoUnauQI2nz6BUb3DpYQCx8RqENbaf8IFdKYOg==
+
 history@^4.9.0:
   version "4.10.1"
   resolved "https://registry.npmjs.org/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
@@ -9324,7 +9338,7 @@ prompts@2.4.0, prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==

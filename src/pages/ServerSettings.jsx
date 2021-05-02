@@ -11,6 +11,7 @@ import LoadingAnimation from '../components/utils/LoadingAnimation';
 import Select from '../components/lib/Select';
 import './ServerSettings.css';
 import SettingContainer from '../components/SettingContainer';
+import SettingCard from '../components/SettingCard';
 
 const ServerSettings = () => {
     const userJwt = useStoreState((state) => state.userSession.jwt);
@@ -81,7 +82,7 @@ const ServerSettings = () => {
     return (
         <SettingContainer>
             <h2>Server Settings</h2>
-            <div className="settings-form">
+            <SettingCard>
                 <div className="settings-inputs">
                     {guildSettingsFetched ? (
                         <>
@@ -130,7 +131,7 @@ const ServerSettings = () => {
                         {updating ? <LoadingAnimation size="0.5rem" /> : 'Update'}
                     </div>
                 </Button>
-            </div>
+            </SettingCard>
         </SettingContainer>
     );
 };

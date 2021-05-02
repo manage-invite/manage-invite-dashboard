@@ -31,5 +31,8 @@ export const fetchGuildChannels = (jwt, guildID) => request(`guilds/${guildID}/c
 export const fetchGuildSettings = (jwt, guildID) => request(`guilds/${guildID}/settings`, jwt);
 export const updateGuildSettings = (jwt, guildID, body) => request(`guilds/${guildID}/settings`, jwt, 'POST', body);
 
+/* Guild plugins */
+export const fetchGuildPlugins = (jwt, guildID) => request(`guilds/${guildID}/plugins`, jwt);
+
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');

@@ -1,0 +1,9 @@
+.logging-message-container {
+    display: grid;
+}
+
+@media (min-width: 1200px) {
+    .logging-message-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
