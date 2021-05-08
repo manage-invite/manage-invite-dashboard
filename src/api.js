@@ -33,6 +33,7 @@ export const updateGuildSettings = (jwt, guildID, body) => request(`guilds/${gui
 
 /* Guild plugins */
 export const fetchGuildPlugins = (jwt, guildID) => request(`guilds/${guildID}/plugins`, jwt);
+export const updateGuildPlugin = (jwt, guildID, pluginName, pluginData) => request(`guilds/${guildID}/plugins/${pluginName}`, jwt, 'POST', pluginData);
 
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');
