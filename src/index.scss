@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+
+:root {
+  --orange: #ffa500;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h4 {
+  font-weight: 500;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1b1c1d;
+  color: white;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+a {
+  color: #7289DA;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.page-content {
+  min-height: calc(100vh - 5rem);
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f0f8ff;
+}
+
+.Toastify__toast--success {
+  background-color: #62A87C !important;
+}
+
+.swal-modal {
+  will-change: unset !important;
+  background-color: #36393f !important;
+}
+
+.swal-button-cancel {
+  background-color: rgb(255, 165, 0);
+}
+
+.swal-button-primary {
+  background-color: rgb(54, 127, 169);
+  transition: background-color 1s;
+  &:hover, &:active {
+    background-color: rgb(54, 127, 169) !important;
+  }
+  &:focus, &:hover {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgb(54, 127, 169) !important;
+  }
+}
+
+.swal-button:focus {
+    box-shadow: none !important;
+}
+
+.swal-button-confirm {
+    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    margin: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    &:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
+    }
+    &:focus {
+        box-shadow: 0 0 20px #eee !important;
+    }
+}
