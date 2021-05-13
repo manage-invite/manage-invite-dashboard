@@ -206,6 +206,7 @@ const LoggingMessages = () => {
     return (
         <SettingContainer>
             <h2>Logging Messages</h2>
+            <h4>Manage the messages sent when a member joins or leaves the server!</h4>
             <div className="logging-message-container">
                 <SettingCard>
                     <h2>Join messages</h2>
