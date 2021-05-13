@@ -1,0 +1,8 @@
+.status-grid {
+    display: grid;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    @media (min-width: 1080px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+};

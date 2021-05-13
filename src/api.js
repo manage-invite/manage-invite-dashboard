@@ -41,3 +41,4 @@ export const fetchSubscriptionPayments = (jwt, guildID, subID) => request(`guild
 
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');
+export const fetchShardsStatus = () => request('status/shards');

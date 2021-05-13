@@ -14,6 +14,7 @@ import ProtectedRoute from './components/utils/ProtectedRoute';
 import ServerSettings from './pages/ServerSettings';
 import LoggingMessages from './pages/LoggingMessages';
 import Premium from './pages/Premium';
+import Status from './pages/Status';
 
 const App = () => (
     <StoreProvider store={store}>
@@ -26,6 +27,7 @@ const App = () => (
                     <ProtectedRoute path="/servers/:id/settings" exact component={ServerSettings} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id" exact component={ServerHome} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers" exact component={Servers} />
+                    <Route path="/status" exact component={Status} />
                     <Route path="/" exact component={Home} />
                     <Route path="*" component={NotFound} />
                 </Switch>
