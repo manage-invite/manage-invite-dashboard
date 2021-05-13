@@ -2,6 +2,7 @@
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { fetchGuildPlugins, fetchGuildChannels, updateGuildPlugin } from '../api';
 import Tabs from '../components/lib/Tabs';
 import SettingCard from '../components/SettingCard';
@@ -111,24 +112,31 @@ const LoggingMessages = () => {
     const onJoinUpdate = () => {
         setJoinLoading('update');
         updateGuildPlugin(userJwt, id, 'join', getJoinPluginData(true)).then((data) => {
+            toast.success('Join message updated!');
             setJoinEnabled(true);
             setJoinLoading(null);
             updateGuildPlugins(data);
+        }).catch((err) => {
+            toast.error(err.message);
         });
     };
 
     const onJoinEnable = () => {
         setJoinLoading('enable');
         updateGuildPlugin(userJwt, id, 'join', getJoinPluginData(true)).then((data) => {
+            toast.success('Join message enabled!');
             setJoinEnabled(true);
             setJoinLoading(null);
             updateGuildPlugins(data);
+        }).catch((err) => {
+            toast.error(err.message);
         });
     };
 
     const onJoinDisable = () => {
         setJoinLoading('disable');
         updateGuildPlugin(userJwt, id, 'join', getJoinPluginData(false)).then((data) => {
+            toast.success('Join message disabled!');
             setJoinEnabled(false);
             setJoinLoading(null);
             updateGuildPlugins(data);
@@ -138,6 +146,7 @@ const LoggingMessages = () => {
     const onLeaveUpdate = () => {
         setLeaveLoading('update');
         updateGuildPlugin(userJwt, id, 'leave', getLeavePluginData(true)).then((data) => {
+            toast.success('Leave message updated!');
             setLeaveEnabled(true);
             setLeaveLoading(null);
             updateGuildPlugins(data);
@@ -147,6 +156,7 @@ const LoggingMessages = () => {
     const onLeaveEnable = () => {
         setLeaveLoading('enable');
         updateGuildPlugin(userJwt, id, 'leave', getLeavePluginData(true)).then((data) => {
+            toast.success('Leave message enabled!');
             setLeaveEnabled(true);
             setLeaveLoading(null);
             updateGuildPlugins(data);
@@ -156,6 +166,7 @@ const LoggingMessages = () => {
     const onLeaveDisable = () => {
         setLeaveLoading('disable');
         updateGuildPlugin(userJwt, id, 'leave', getLeavePluginData(false)).then((data) => {
+            toast.success('Leave message disabled!');
             setLeaveEnabled(false);
             setLeaveLoading(null);
             updateGuildPlugins(data);
@@ -165,6 +176,7 @@ const LoggingMessages = () => {
     const onJoinDMUpdate = () => {
         setJoinDMLoading('update');
         updateGuildPlugin(userJwt, id, 'joinDM', getJoinDMPluginData(true)).then((data) => {
+            toast.success('Join DM message updated!');
             setJoinDMEnabled(true);
             setJoinDMLoading(null);
             updateGuildPlugins(data);
@@ -174,6 +186,7 @@ const LoggingMessages = () => {
     const onJoinDMEnable = () => {
         setJoinDMLoading('enable');
         updateGuildPlugin(userJwt, id, 'joinDM', getJoinDMPluginData(true)).then((data) => {
+            toast.success('Join DM message enabled!');
             setJoinDMEnabled(true);
             setJoinDMLoading(null);
             updateGuildPlugins(data);
@@ -183,13 +196,12 @@ const LoggingMessages = () => {
     const onJoinDMDisable = () => {
         setJoinDMLoading('disable');
         updateGuildPlugin(userJwt, id, 'joinDM', getJoinDMPluginData(false)).then((data) => {
+            toast.success('Join DM message disabled!');
             setJoinDMEnabled(false);
             setJoinDMLoading(null);
             updateGuildPlugins(data);
         });
     };
-
-    const updating = false;
 
     return (
         <SettingContainer>

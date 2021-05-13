@@ -40,6 +40,8 @@ const ServerSettings = () => {
             setCmdChannel(data.data.cmdChannel);
             setUpdating(false);
             setGuildSettingsFetched(true);
+        }).catch((err) => {
+            toast.error(err.message);
         });
     };
 
