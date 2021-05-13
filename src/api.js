@@ -35,5 +35,9 @@ export const updateGuildSettings = (jwt, guildID, body) => request(`guilds/${gui
 export const fetchGuildPlugins = (jwt, guildID) => request(`guilds/${guildID}/plugins`, jwt);
 export const updateGuildPlugin = (jwt, guildID, pluginName, pluginData) => request(`guilds/${guildID}/plugins/${pluginName}`, jwt, 'POST', pluginData);
 
+/* Guild subscriptions */
+export const fetchGuildSubscriptions = (jwt, guildID) => request(`guilds/${guildID}/subscriptions`, jwt);
+export const fetchSubscriptionPayments = (jwt, guildID, subID) => request(`guilds/${guildID}/subscriptions/${subID}/payments`, jwt);
+
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');
