@@ -61,12 +61,8 @@ const Server = ({
             swal({
                 buttons: {
                     cancel: 'Cancel',
-                    why: {
-                        text: 'Ask for a 7-day trial',
-                        className: 'swal-button-primary'
-                    },
                     confirm: {
-                        text: 'Buy',
+                        text: 'Get it now',
                         className: 'swal-button-confirm'
                     }
                 },
@@ -228,8 +224,11 @@ const Server = ({
                                 marginBottom: 0
                             }}
                             >
-                                Premium is available for the symbolic price of $2/month.
-
+                                { /* eslint-disable-next-line max-len */ }
+                                Premium is available for the symbolic price of $2/month. You can also ask for a free
+                                {' '}
+                                <a href={process.env.REACT_APP_DISCORD_URL} target="_blank" rel="noreferrer">7-day trial</a>
+                                .
                             </p>
                         </div>
                     </div>

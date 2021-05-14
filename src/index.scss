@@ -58,8 +58,12 @@ a {
   background-color: #36393f !important;
 }
 
-.swal-button-cancel {
-  background-color: rgb(255, 165, 0);
+.swal-button--cancel {
+    background-color: unset !important;
+    color: white;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .swal-button-primary {
@@ -78,15 +82,14 @@ a {
 }
 
 .swal-button-confirm {
-    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    background-image: linear-gradient(to right, #367fa9 0%, #407594  51%, #367fa9  100%);
     margin: 0.5rem;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 0.625rem;
+    border-radius: 0.5rem;
     display: block;
     &:hover {
         background-position: right center;
@@ -96,4 +99,8 @@ a {
     &:focus {
         box-shadow: 0 0 1.25rem #eee !important;
     }
+}
+
+.swal-overlay {
+    backdrop-filter: blur(10px);
 }

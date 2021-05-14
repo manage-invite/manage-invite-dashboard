@@ -84,6 +84,20 @@ const ShardStatus = ({ status }) => (
                 MB
             </h4>
         </div>
+        <div style={{
+            display: 'flex',
+            alignItems: 'center'
+        }}
+        >
+            <h4 style={{
+                margin: 0
+            }}
+            >
+                ServerCount:
+                {' '}
+                {status.serverCount}
+            </h4>
+        </div>
     </div>
 );
 
