@@ -7,7 +7,8 @@ const ShardStatus = ({ status }) => (
         backgroundColor: '#2e3338',
         borderRadius: '1rem',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        border: `${status.status === 'Ready' ? 'green' : 'red'} 2px solid`
     }}
     >
         <div style={{
@@ -51,52 +52,6 @@ const ShardStatus = ({ status }) => (
             >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={status.status === 'Ready' ? 'M5 13l4 4L19 7' : 'M6 18L18 6M6 6l12 12'} />
             </svg>
-        </div>
-        <div style={{
-            display: 'flex',
-            alignItems: 'center'
-        }}
-        >
-            <h4 style={{
-                margin: 0
-            }}
-            >
-                Ping:
-                {' '}
-                {status.ping}
-                {' '}
-                ms
-            </h4>
-        </div>
-        <div style={{
-            display: 'flex',
-            alignItems: 'center'
-        }}
-        >
-            <h4 style={{
-                margin: 0
-            }}
-            >
-                RAM:
-                {' '}
-                {status.ram}
-                {' '}
-                MB
-            </h4>
-        </div>
-        <div style={{
-            display: 'flex',
-            alignItems: 'center'
-        }}
-        >
-            <h4 style={{
-                margin: 0
-            }}
-            >
-                ServerCount:
-                {' '}
-                {status.serverCount}
-            </h4>
         </div>
     </div>
 );
