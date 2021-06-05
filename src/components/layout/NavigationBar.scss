@@ -121,19 +121,19 @@ nav {
 		.links a,button {
 			font-size: 1.25rem;
 		}
-		&:checked ~ .links {
-			bottom: 15.6rem;
+		#nav-toggle:checked ~ .links {
+			bottom: 10.6rem;
 		}
 		.icon-burger {
 			display: block;
 		}
-		&:checked ~ .icon-burger .line:nth-child(1) {
+		#nav-toggle:checked ~ .icon-burger .line:nth-child(1) {
 			transform: translateY(0.625rem) rotate(225deg);
 		}
-		&:checked ~ .icon-burger .line:nth-child(3) {
+		#nav-toggle:checked ~ .icon-burger .line:nth-child(3) {
 			transform: translateY(-0.625rem) rotate(-225deg);
 		}
-		&:checked ~ .icon-burger .line:nth-child(2) {
+		#nav-toggle:checked ~ .icon-burger .line:nth-child(2) {
 			opacity: 0;
 		}
 	}
