@@ -103,6 +103,7 @@ const NavigationBar = () => {
             <ul className="links">
                 <li><Link to="/status">Status</Link></li>
                 <li><a href="https://docs.manage-invite.xyz" target="_blank" rel="noreferrer">Documentation</a></li>
+                <li><a href="https://developer.manage-invite.xyz" target="_blank" rel="noreferrer">Developers</a></li>
                 <li><a href={process.env.REACT_APP_DISCORD_URL} target="_blank" rel="noreferrer">Support server</a></li>
                 <li>
                     {dashboardButton}
