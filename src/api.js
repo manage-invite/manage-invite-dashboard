@@ -4,7 +4,7 @@ const request = (path, token, method = 'GET', body) => new Promise((resolve, rej
     fetch(`${process.env.REACT_APP_API_URL}/${path}`, {
         method,
         headers: {
-            authorization: `Dash ${token}`,
+            authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
         body: method === 'POST' ? JSON.stringify(body) : undefined
