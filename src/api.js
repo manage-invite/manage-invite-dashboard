@@ -39,6 +39,10 @@ export const updateGuildPlugin = (jwt, guildID, pluginName, pluginData) => reque
 export const fetchGuildSubscriptions = (jwt, guildID) => request(`guilds/${guildID}/subscriptions`, jwt);
 export const fetchSubscriptionPayments = (jwt, guildID, subID) => request(`guilds/${guildID}/subscriptions/${subID}/payments`, jwt);
 
+/* Guild API */
+export const fetchGuildAPIToken = (jwt, guildID) => request(`guilds/${guildID}/jwt`, jwt);
+export const regenGuildAPIToken = (jwt, guildID) => request(`guilds/${guildID}/jwt`, jwt, 'POST');
+
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');
 export const fetchShardsStatus = () => request('status/shards');

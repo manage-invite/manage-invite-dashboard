@@ -15,6 +15,7 @@ import ServerSettings from './pages/ServerSettings';
 import LoggingMessages from './pages/LoggingMessages';
 import Premium from './pages/Premium';
 import Status from './pages/Status';
+import ApiToken from './pages/ApiToken';
 
 const App = () => (
     <StoreProvider store={store}>
@@ -22,6 +23,7 @@ const App = () => (
             <div className="page-content">
                 <NavigationBar />
                 <Switch>
+                    <ProtectedRoute path="/servers/:id/api" exact component={ApiToken} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id/premium" exact component={Premium} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id/messages" exact component={LoggingMessages} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id/settings" exact component={ServerSettings} fetchServers serverPermissionsProtection />

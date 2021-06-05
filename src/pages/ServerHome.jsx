@@ -114,7 +114,7 @@ const ServerHome = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="home-plugins-item">
+                    <div className="home-plugins-item" onClick={() => history.push(`/servers/${id}/api`)} aria-hidden="true">
                         <div className="home-plugins-icon">
                             <img src="https://img.icons8.com/fluent/48/000000/add-key.png" alt="leaderboard" />
                         </div>
