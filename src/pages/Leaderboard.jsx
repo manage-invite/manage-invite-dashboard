@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchGuildLeaderboard } from '../api';
 import SettingCard from '../components/SettingCard';
 import SettingContainer from '../components/SettingContainer';
-import './Leaderboard.scss';
+import './Leaderboard.css';
 
 const Leaderboard = () => {
     const { id } = useParams();
