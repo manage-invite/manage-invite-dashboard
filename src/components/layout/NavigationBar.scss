@@ -45,6 +45,21 @@ nav {
 		padding: 1em;
 		font-size: 1rem;
 		font-weight: 400;
+
+		&:after {
+			bottom: 0;
+			content: "";
+			display: block;
+			height: 2px;
+			background: #fff;
+			transition: width 0.3s ease 0s;
+			width: 0;
+			left: 0;
+		}
+
+		&:not(button):hover::after {
+			width: 100%;
+		}
 	}
 
 	#nav-toggle {
