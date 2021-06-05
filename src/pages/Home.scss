@@ -1,0 +1,25 @@
+.banner {
+    background-color: #963131;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner-elements {
+    padding: 2rem;
+}
+
+.banner-btn {
+    margin-right: 1rem;
+    border-radius: 4px;
+    color: white;
+    padding: 0 2rem;
+    border: 2px solid white;
+    transition: background-color 0.5s ease;
+
+    &:hover {
+        color: black;
+        background-color: white;
+    }
+}
