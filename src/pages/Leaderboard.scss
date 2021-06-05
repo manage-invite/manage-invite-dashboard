@@ -1,0 +1,50 @@
+.leaderboard-item {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-avatar {
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.top-whois {
+    padding: 8px;
+    align-items: center;
+    display: flex;
+    width: 60%;
+}
+
+.top-bubble {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex: 0 0 35px;
+    height: 35px;
+    background-color: #50555a;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.top-bubble.first {
+    background-color: #da9e3b;
+}
+.top-bubble.second {
+    background-color: #989898;
+}
+.top-bubble.third {
+    background-color: #ae7441;
+}
+
+.top-username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-muted {
+    color: #82868a;
+}

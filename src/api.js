@@ -49,6 +49,9 @@ export const fetchSubscriptionPayments = (jwt, guildID, subID) => request(`guild
 export const fetchGuildAPIToken = (jwt, guildID) => request(`guilds/${guildID}/jwt`, jwt);
 export const regenGuildAPIToken = (jwt, guildID) => request(`guilds/${guildID}/jwt`, jwt, 'POST');
 
+/* Guild leaderboard */
+export const fetchGuildLeaderboard = (guildID) => request(`guilds/${guildID}/leaderboard`);
+
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');
 export const fetchShardsStatus = () => request('status/shards');

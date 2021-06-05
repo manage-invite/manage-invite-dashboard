@@ -78,15 +78,15 @@ const ServerHome = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="home-plugins-item">
+                    <div className="home-plugins-item" onClick={() => history.push(`/servers/${id}/leaderboard`)} aria-hidden="true">
                         <div className="home-plugins-icon">
-                            <img src="https://img.icons8.com/fluent/48/000000/prize.png" alt="reward" />
+                            <img src="https://img.icons8.com/fluent/48/000000/prize.png" alt="leaderboard" />
                         </div>
                         <div>
-                            <span className="home-plugins-item-title">Ranks Rewards</span>
+                            <span className="home-plugins-item-title">Leaderboard</span>
                             <p className="home-plugins-item-content">
                                 { /* eslint-disable-next-line max-len */ }
-                                Set up roles that will be given once users reach a specific number of invites!
+                                View, clear and modify guild leaderboards!
                             </p>
                         </div>
                     </div>
