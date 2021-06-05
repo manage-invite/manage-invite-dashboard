@@ -43,16 +43,15 @@ const Home = () => {
                 margin: '2rem'
             }}
             >
+                <div style={{
+                    maxWidth: '1280px',
+                    margin: '0 auto'
+                }}
+                >
+                    <h2>Some features</h2>
+                </div>
                 {items.map((item, idx) => (
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        alignSelf: 'center',
-                        maxWidth: '1280px',
-                        margin: '0 auto',
-                        marginTop: '3rem'
-                    }}
-                    >
+                    <div className="feature-pres">
                         {idx % 2 === 0 ? (
                             <>
                                 <img
@@ -63,10 +62,7 @@ const Home = () => {
                                     alt="Invites"
                                 />
 
-                                <div style={{
-                                    marginLeft: '2rem'
-                                }}
-                                >
+                                <div className="right">
                                     <h3>{item.title}</h3>
                                     <p>
                                         {item.description}
@@ -75,16 +71,14 @@ const Home = () => {
                             </>
                         ) : (
                             <>
-                                <div style={{
-                                    marginRight: '2rem'
-                                }}
-                                >
+                                <div>
                                     <h3>{item.title}</h3>
                                     <p>
                                         {item.description}
                                     </p>
                                 </div>
                                 <img
+                                    className="right"
                                     style={{
                                         borderRadius: '10px'
                                     }}

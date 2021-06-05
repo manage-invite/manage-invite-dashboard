@@ -23,3 +23,29 @@
         background-color: white;
     }
 }
+
+.feature-pres {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    flex-direction: column;
+    img {
+        height: 100px;
+    }
+}
+
+@media (min-width: 1080px) {
+    .feature-pres {
+        margin-top: 3rem;
+        flex-direction: row;
+        img {
+            height: auto;
+        }
+        .right {
+            margin-left: 2rem;
+        }
+    }
+}
