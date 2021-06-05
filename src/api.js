@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 const request = (path, token, method = 'GET', body) => new Promise((resolve, reject) => {
     fetch(`${process.env.REACT_APP_API_URL}/${path}`, {
         method,
@@ -7,15 +9,19 @@ const request = (path, token, method = 'GET', body) => new Promise((resolve, rej
         },
         body: method === 'POST' ? JSON.stringify(body) : undefined
     }).then((res) => {
-        res.text().then((result) => {
-            try {
-                const data = JSON.parse(result);
-                if (data.error) reject(data);
-                else resolve(data);
-            } catch (e) {
-                throw result;
-            }
-        });
+        if (res.status === 429) {
+            toast.error('Hey, take it easy! You\'re going a bit too fast, try again in a few seconds! 😅');
+        } else {
+            res.text().then((result) => {
+                try {
+                    const data = JSON.parse(result);
+                    if (data.error) reject(data);
+                    else resolve(data);
+                } catch (e) {
+                    throw result;
+                }
+            });
+        }
     }).catch((e) => {
         reject(e);
     });
