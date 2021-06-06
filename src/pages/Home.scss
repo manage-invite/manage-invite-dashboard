@@ -33,7 +33,11 @@
     margin-top: 1rem;
     flex-direction: column;
     img {
-        height: 100px;
+        width: 100%;
+        height: auto;
+    }
+    div {
+        height: auto;
     }
 }
 
@@ -42,10 +46,14 @@
         margin-top: 3rem;
         flex-direction: row;
         img {
-            height: auto;
+            width: auto;
+            height: 230px;
         }
         .right {
             margin-left: 2rem;
+        }
+        div {
+            height: 250px;
         }
     }
 }

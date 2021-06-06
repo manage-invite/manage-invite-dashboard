@@ -1,4 +1,5 @@
 import React from 'react';
+import { isMobile } from 'react-device-detect';
 import Button from '../components/lib/Button';
 import './Home.scss';
 
@@ -7,7 +8,18 @@ const Home = () => {
         {
             img: 'https://docs.manage-invite.xyz/img/example-invites.png',
             title: 'Track regular, bonus, fake and leaves invites!',
-            description: 'ManageInvite counts the invites and is able to categorize them, in 4 different types : the regular invites, when a member invites someone else in the server, the bonus ones, when an administrator adds invites to an account, the fake invites, when a member tries to invite the same person twice to gain more invites and the leave invites, when someone invited by the member left the server.'
+            description: (
+                <>
+                    { /* eslint-disable-next-line max-len */ }
+                    <p>ManageInvite counts the invitations and is able to divide them into 4 categories to make sense of them.</p>
+                    <ul>
+                        <li>Regular</li>
+                        <li>Fake: when someone tries to invite someone twice</li>
+                        <li>Bonus: when the administrator adds invites to someone</li>
+                        <li>Leaves: when someone you invited leaves the server</li>
+                    </ul>
+                </>
+            )
         },
         {
             img: 'https://docs.manage-invite.xyz/img/example-sync.png',
@@ -43,16 +55,9 @@ const Home = () => {
                 margin: '2rem'
             }}
             >
-                <div style={{
-                    maxWidth: '1280px',
-                    margin: '0 auto'
-                }}
-                >
-                    <h2>Some features</h2>
-                </div>
                 {items.map((item, idx) => (
                     <div className="feature-pres">
-                        {idx % 2 === 0 ? (
+                        {(idx % 2 === 0 || isMobile) ? (
                             <>
                                 <img
                                     style={{
@@ -64,18 +69,22 @@ const Home = () => {
 
                                 <div className="right">
                                     <h3>{item.title}</h3>
-                                    <p>
-                                        {item.description}
-                                    </p>
+                                    {!isMobile && (
+                                        <p>
+                                            {item.description}
+                                        </p>
+                                    )}
                                 </div>
                             </>
                         ) : (
                             <>
                                 <div>
                                     <h3>{item.title}</h3>
-                                    <p>
-                                        {item.description}
-                                    </p>
+                                    {!isMobile && (
+                                        <p>
+                                            {item.description}
+                                        </p>
+                                    )}
                                 </div>
                                 <img
                                     className="right"
