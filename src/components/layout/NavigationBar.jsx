@@ -10,7 +10,7 @@ const NavigationBar = () => {
     const updateUser = useStoreActions((actions) => actions.userSession.updateUser);
     const updateJwt = useStoreActions((actions) => actions.userSession.updateJwt);
     const loginLoading = useStoreState((state) => state.userSession.loginLoading);
-    const updateLoginLoading = useStoreActions((actions) => actions.userSession.loginLoading);
+    const updateLoginLoading = useStoreActions((actions) => actions.userSession.updateLoginLoading);
 
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
 
