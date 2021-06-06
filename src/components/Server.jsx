@@ -80,7 +80,7 @@ const Server = ({
                     addWindow.close();
                 });
             });
-        } else if (manageButton) {
+        } else if (manageButton && !isWaitingVerification) {
             history.push(`/servers/${serverID}`);
         } else if (!isWaitingVerification) {
             swal({
