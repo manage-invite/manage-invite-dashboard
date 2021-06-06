@@ -44,7 +44,7 @@ const Status = () => {
             </div>
             <div className="status-grid">
                 {statuses.map((status) => (
-                    <ShardStatus status={status} />
+                    <ShardStatus key={status.id} status={status} />
                 ))}
             </div>
         </div>
