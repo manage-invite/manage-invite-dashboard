@@ -6,6 +6,7 @@ import './Server.css';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { useHistory } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
+import ReactTooltip from 'react-tooltip';
 import { socket, ensureSocketConnected } from '../socket';
 
 const Server = ({
@@ -270,44 +271,48 @@ const Server = ({
     };
 
     return (
-        <div className="server">
-            <div className="server-info">
-                <img className="server-icon" src={serverIconURL} alt="Server" />
-                <span className="server-name">{serverName}</span>
+        <>
+            <ReactTooltip multiline />
+            <div className="server">
+                <div className="server-info">
+                    <img className="server-icon" src={serverIconURL} alt="Server" />
+                    <span className="server-name">{serverName}</span>
+                </div>
+                <button
+                    data-tip="PayPal usually takes 5 minutes to send us the payment data. <br />If your payment has not been verified after 15 minutes, please join our support server."
+                    type="button"
+                    className="manage-button"
+                    style={{
+                        backgroundColor: manageButtonColor
+                    }}
+                    onClick={handleManageClick}
+                >
+                    {manageButtonText}
+                </button>
+                <form className="paypal-submit" action={formURL} method="post">
+                    <input type="hidden" name="business" value={paypalEmail} />
+
+                    <input type="hidden" name="lc" value="US" />
+
+                    <input type="hidden" name="cmd" value="_xclick-subscriptions" />
+                    <input type="hidden" name="a3" value="2" />
+                    <input type="hidden" name="p3" value="1" />
+                    <input type="hidden" name="t3" value="M" />
+
+                    <input type="hidden" name="item_name" value="ManageInvite Premium" />
+
+                    <input type="hidden" name="no_shipping" value="1" />
+
+                    <input type="hidden" name="currency_code" value="USD" />
+                    <input type="hidden" name="custom" value={`manageinvite_premium,${serverID},${currentUser.id},${serverName}`} />
+                    <input type="hidden" name="src" value="1" />
+
+                    <input type="hidden" name="notify_url" value={ipnURL} />
+                    <input type="hidden" name="return" value={returnURL} />
+                    <input type="hidden" name="cancel_return" value={cancelURL} />
+                </form>
             </div>
-            <button
-                type="button"
-                className="manage-button"
-                style={{
-                    backgroundColor: manageButtonColor
-                }}
-                onClick={handleManageClick}
-            >
-                {manageButtonText}
-            </button>
-            <form className="paypal-submit" action={formURL} method="post">
-                <input type="hidden" name="business" value={paypalEmail} />
-
-                <input type="hidden" name="lc" value="US" />
-
-                <input type="hidden" name="cmd" value="_xclick-subscriptions" />
-                <input type="hidden" name="a3" value="2" />
-                <input type="hidden" name="p3" value="1" />
-                <input type="hidden" name="t3" value="M" />
-
-                <input type="hidden" name="item_name" value="ManageInvite Premium" />
-
-                <input type="hidden" name="no_shipping" value="1" />
-
-                <input type="hidden" name="currency_code" value="USD" />
-                <input type="hidden" name="custom" value={`manageinvite_premium,${serverID},${currentUser.id},${serverName}`} />
-                <input type="hidden" name="src" value="1" />
-
-                <input type="hidden" name="notify_url" value={ipnURL} />
-                <input type="hidden" name="return" value={returnURL} />
-                <input type="hidden" name="cancel_return" value={cancelURL} />
-            </form>
-        </div>
+        </>
     );
 };
 
