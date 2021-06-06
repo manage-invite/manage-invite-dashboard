@@ -262,7 +262,7 @@ const Server = ({
             setTimeout(() => {
                 const onClick = () => {
                     // todo handle paypal payment
-                    document.querySelector('.paypal-submit').submit();
+                    document.querySelector(`.paypal-submit-${serverID}`).submit();
                     document.querySelector('.swal-button-confirm').removeEventListener('click', onClick);
                 };
                 document.querySelector('.swal-button-confirm').addEventListener('click', onClick);
@@ -289,7 +289,7 @@ const Server = ({
                 >
                     {manageButtonText}
                 </button>
-                <form className="paypal-submit" action={formURL} method="post">
+                <form className={`paypal-submit-${serverID}`} action={formURL} method="post">
                     <input type="hidden" name="business" value={paypalEmail} />
 
                     <input type="hidden" name="lc" value="US" />
