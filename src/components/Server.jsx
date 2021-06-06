@@ -39,7 +39,7 @@ const Server = ({
     const handleManageClick = () => {
         if (addButton) {
             const clientID = process.env.REACT_APP_CLIENT_ID;
-            const redirectURI = `${process.env.REACT_APP_API_URL}/invite`;
+            const redirectURI = `${process.env.REACT_APP_API_URL}/invite/callback`;
             ensureSocketConnected().then(() => {
                 console.log('[WS] Connected.');
                 const requestID = btoa(+new Date()).substr(-7, 5);

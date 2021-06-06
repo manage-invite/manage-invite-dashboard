@@ -20,7 +20,7 @@ const Home = () => {
 
     const login = () => {
         const clientID = process.env.REACT_APP_CLIENT_ID;
-        const redirectURI = `${process.env.REACT_APP_API_URL}/auth`;
+        const redirectURI = `${process.env.REACT_APP_API_URL}/auth/callback`;
         ensureSocketConnected().then(() => {
             console.log('[WS] Connected.');
             document.querySelector('#dash-button').blur();
