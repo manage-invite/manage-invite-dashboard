@@ -279,7 +279,7 @@ const Server = ({
                     <span className="server-name">{serverName}</span>
                 </div>
                 <button
-                    data-tip="PayPal usually takes 5 minutes to send us the payment data. <br />If your payment has not been verified after 15 minutes, please join our support server."
+                    data-tip={isWaitingVerification && 'PayPal usually takes 5 minutes to send us the payment data. <br />If your payment has not been verified after 15 minutes, please join our support server.'}
                     type="button"
                     className="manage-button"
                     style={{
