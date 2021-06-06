@@ -234,6 +234,14 @@ const Server = ({
                     </div>
                 )
             });
+            setTimeout(() => {
+                const onClick = () => {
+                    // todo handle paypal payment
+
+                    document.querySelector('.swal-button-confirm').removeEventListener('click', onClick);
+                };
+                document.querySelector('.swal-button-confirm').addEventListener('click', onClick);
+            }, 500);
         }
     };
 
