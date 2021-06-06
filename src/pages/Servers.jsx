@@ -48,7 +48,10 @@ const Servers = () => {
                         // eslint-disable-next-line no-nested-ternary
                             (a.isPremium === b.isPremium)
                             // eslint-disable-next-line no-nested-ternary
-                                ? (a.isAdded === b.isAdded ? 0 : a.isAdded ? -1 : 1)
+                                ? ((a.isWaitingVerification === b.isWaitingVerification)
+                                    // eslint-disable-next-line no-nested-ternary
+                                    ? (a.isAdded === b.isAdded ? 0 : a.isAdded ? -1 : 1)
+                                    : a.isWaitingVerification ? -1 : 1)
                                 : a.isPremium ? -1 : 1))
                         .map((guild) => (
                             <Server key={guild.id} serverID={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} />

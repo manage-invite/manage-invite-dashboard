@@ -11,6 +11,30 @@ import { socket, ensureSocketConnected } from '../socket';
 const Server = ({
     serverID, serverName, serverIconURL, isAdded, isPremium, isWaitingVerification, isTrial
 }) => {
+    const [
+        paypalEmail,
+        formURL,
+        ipnURL,
+        returnURL,
+        cancelURL
+    ] = !process.env.REACT_APP_SANDBOX_PAYPAL_ENABLED
+        ? [
+            process.env.REACT_APP_PAYPAL_EMAIL,
+            process.env.REACT_APP_PAYPAL_FORM_URL,
+            process.env.REACT_APP_PAYPAL_IPN_URL,
+            process.env.REACT_APP_PAYPAL_RETURN_URL,
+            process.env.REACT_APP_PAYPAL_CANCEL_URL
+        ]
+        : [
+            process.env.REACT_APP_SANDBOX_PAYPAL_EMAIL,
+            process.env.REACT_APP_SANDBOX_PAYPAL_FORM_URL,
+            process.env.REACT_APP_SANDBOX_PAYPAL_IPN_URL,
+            process.env.REACT_APP_SANDBOX_PAYPAL_RETURN_URL,
+            process.env.REACT_APP_SANDBOX_PAYPAL_CANCEL_URL
+        ];
+
+    const currentUser = useStoreState((state) => state.userSession.user);
+
     const userGuildsCache = useStoreState((state) => state.guildsCache.cache);
     const updateGuildCache = useStoreActions((actions) => actions.guildsCache.updateGuild);
 
@@ -23,8 +47,8 @@ const Server = ({
     let manageButtonText = 'Get premium';
     let manageButtonColor = '#367fa9';
     if (isWaitingVerification) {
-        manageButtonText = 'Waiting for verification...';
-        manageButtonColor = '#80FFA500';
+        manageButtonText = 'Being verified...';
+        manageButtonColor = '#FF7F50';
     } else if (addButton) {
         manageButtonText = 'Add to Discord';
         manageButtonColor = '#3eb386';
@@ -57,7 +81,7 @@ const Server = ({
             });
         } else if (manageButton) {
             history.push(`/servers/${serverID}`);
-        } else {
+        } else if (!isWaitingVerification) {
             swal({
                 buttons: {
                     cancel: 'Cancel',
@@ -237,7 +261,7 @@ const Server = ({
             setTimeout(() => {
                 const onClick = () => {
                     // todo handle paypal payment
-
+                    document.querySelector('.paypal-submit').submit();
                     document.querySelector('.swal-button-confirm').removeEventListener('click', onClick);
                 };
                 document.querySelector('.swal-button-confirm').addEventListener('click', onClick);
@@ -258,10 +282,31 @@ const Server = ({
                     backgroundColor: manageButtonColor
                 }}
                 onClick={handleManageClick}
-                disabled={isWaitingVerification}
             >
                 {manageButtonText}
             </button>
+            <form className="paypal-submit" action={formURL} method="post">
+                <input type="hidden" name="business" value={paypalEmail} />
+
+                <input type="hidden" name="lc" value="US" />
+
+                <input type="hidden" name="cmd" value="_xclick-subscriptions" />
+                <input type="hidden" name="a3" value="2" />
+                <input type="hidden" name="p3" value="1" />
+                <input type="hidden" name="t3" value="M" />
+
+                <input type="hidden" name="item_name" value="ManageInvite Premium" />
+
+                <input type="hidden" name="no_shipping" value="1" />
+
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="hidden" name="custom" value={`manageinvite_premium,${serverID},${currentUser.id},${serverName}`} />
+                <input type="hidden" name="src" value="1" />
+
+                <input type="hidden" name="notify_url" value={ipnURL} />
+                <input type="hidden" name="return" value={returnURL} />
+                <input type="hidden" name="cancel_return" value={cancelURL} />
+            </form>
         </div>
     );
 };
