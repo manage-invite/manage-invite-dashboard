@@ -1,5 +1,5 @@
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import LoadingAnimation from '../utils/LoadingAnimation';
 import { socket, ensureSocketConnected } from '../../socket';
@@ -9,10 +9,11 @@ const NavigationBar = () => {
     const currentUser = useStoreState((state) => state.userSession.user);
     const updateUser = useStoreActions((actions) => actions.userSession.updateUser);
     const updateJwt = useStoreActions((actions) => actions.userSession.updateJwt);
+    const loginLoading = useStoreState((state) => state.userSession.loginLoading);
+    const updateLoginLoading = useStoreActions((actions) => actions.userSession.loginLoading);
 
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
 
-    const [loginLoading, setLoginLoading] = useState(false);
     const history = useHistory();
 
     const login = () => {
@@ -26,13 +27,13 @@ const NavigationBar = () => {
             socket.on('authInit', () => {
                 console.log('[WS] Authentication initialized.');
                 history.push('/servers');
-                setLoginLoading(true);
+                updateLoginLoading(true);
                 loginWindow.close();
             });
             socket.on('authFailed', () => {
                 console.log('[WS] Authentication failed.');
                 history.push('/');
-                setLoginLoading(false);
+                updateLoginLoading(false);
             });
             socket.on('login', (userData) => {
                 console.log(`[WS] Login payload received. User ID is ${userData.id}.`);

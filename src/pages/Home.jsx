@@ -1,9 +1,57 @@
+import { useStoreState, useStoreActions } from 'easy-peasy';
 import React from 'react';
 import { isMobile } from 'react-device-detect';
+import { useHistory } from 'react-router-dom';
 import Button from '../components/lib/Button';
+import LoadingAnimation from '../components/utils/LoadingAnimation';
+import { socket, ensureSocketConnected } from '../socket';
 import './Home.scss';
 
 const Home = () => {
+    const currentUser = useStoreState((state) => state.userSession.user);
+    const updateUser = useStoreActions((actions) => actions.userSession.updateUser);
+    const updateJwt = useStoreActions((actions) => actions.userSession.updateJwt);
+    const loginLoading = useStoreState((state) => state.userSession.loginLoading);
+    const updateLoginLoading = useStoreActions((actions) => actions.userSession.updateLoginLoading);
+
+    const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
+
+    const history = useHistory();
+
+    const login = () => {
+        const clientID = process.env.REACT_APP_CLIENT_ID;
+        const redirectURI = `${process.env.REACT_APP_API_URL}/auth`;
+        ensureSocketConnected().then(() => {
+            console.log('[WS] Connected.');
+            document.querySelector('#dash-button').blur();
+            const loginURL = `https://discord.com/api/oauth2/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectURI)}&response_type=code&scope=identify%20guilds&state=${socket.id}`;
+            const loginWindow = window.open(loginURL, '_blank', '');
+            socket.on('authInit', () => {
+                console.log('[WS] Authentication initialized.');
+                history.push('/servers');
+                updateLoginLoading(true);
+                loginWindow.close();
+            });
+            socket.on('authFailed', () => {
+                console.log('[WS] Authentication failed.');
+                history.push('/');
+                updateLoginLoading(false);
+            });
+            socket.on('login', (userData) => {
+                console.log(`[WS] Login payload received. User ID is ${userData.id}.`);
+                updateUser(userData);
+            });
+            socket.on('jwt', (jwt) => {
+                console.log(`[WS] JWT received. Value: ${jwt}.`);
+                updateJwt(jwt);
+            });
+            socket.on('guilds', (guildsData) => {
+                console.log(`[WS] Guilds payload received. ${guildsData.length} guilds received.`);
+                updateUserGuildsCache(guildsData);
+            });
+        });
+    };
+
     const items = [
         {
             img: 'https://docs.manage-invite.xyz/img/example-invites.png',
@@ -42,11 +90,17 @@ const Home = () => {
                     <p>
                         Stable, powerful and modern Discord bot to manage your server invites 🚀
                     </p>
-                    <Button className="button banner-btn">
+                    <Button
+                        className="button banner-btn"
+                        onClick={() => {
+                            window.location.href = (`https://discord.com/api/oauth2/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&permissions=8&redirect_uri=${encodeURIComponent('https://manage-invite.xyz')}&scope=bot&response_type=code`);
+                        }}
+                    >
                         <h3>Add to Discord</h3>
                     </Button>
-                    <Button className="button banner-btn">
-                        <h3>Login</h3>
+                    <Button className="button banner-btn" onClick={() => (currentUser ? history.push('/servers') : login())}>
+                        { /* eslint-disable-next-line no-nested-ternary */ }
+                        <h3>{currentUser ? 'Dashboard' : (loginLoading ? <LoadingAnimation /> : 'Login')}</h3>
                     </Button>
                 </div>
             </div>
@@ -56,7 +110,7 @@ const Home = () => {
             }}
             >
                 {items.map((item, idx) => (
-                    <div className="feature-pres">
+                    <div className="feature-pres" key={item.title}>
                         {(idx % 2 === 0 || isMobile) ? (
                             <>
                                 <img
@@ -70,9 +124,7 @@ const Home = () => {
                                 <div className="right">
                                     <h3>{item.title}</h3>
                                     {!isMobile && (
-                                        <p>
-                                            {item.description}
-                                        </p>
+                                        item.description
                                     )}
                                 </div>
                             </>
@@ -81,9 +133,7 @@ const Home = () => {
                                 <div>
                                     <h3>{item.title}</h3>
                                     {!isMobile && (
-                                        <p>
-                                            {item.description}
-                                        </p>
+                                        item.description
                                     )}
                                 </div>
                                 <img

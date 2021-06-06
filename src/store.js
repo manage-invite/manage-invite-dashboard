@@ -5,11 +5,15 @@ import { createStore, action, persist } from 'easy-peasy';
 const userSessionModel = {
     user: null,
     jwt: null,
+    loginLoading: false,
     updateUser: action((state, payload) => {
         state.user = payload;
     }),
     updateJwt: action((state, payload) => {
         state.jwt = payload;
+    }),
+    updateLoginLoading: action((state, payload) => {
+        state.loginLoading = payload;
     })
 };
 
