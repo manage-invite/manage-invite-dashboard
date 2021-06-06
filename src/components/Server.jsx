@@ -272,7 +272,7 @@ const Server = ({
 
     return (
         <>
-            <ReactTooltip multiline />
+            {isWaitingVerification && <ReactTooltip multiline />}
             <div className="server">
                 <div className="server-info">
                     <img className="server-icon" src={serverIconURL} alt="Server" />
