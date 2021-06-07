@@ -50,8 +50,7 @@ const ApiToken = () => {
                         }}
                         >
                             <Input
-                                disabled
-                                onChange={(e) => setToken(e.target.value)}
+                                onChange={() => {}}
                                 value={!token ? 'Click Generate to get your token!' : token}
                                 id="token"
                                 style={{

@@ -32,7 +32,7 @@ const ServerSettings = () => {
         updateGuildSettings(userJwt, id, {
             prefix,
             language,
-            cmdChannel
+            cmdChannel: !cmdChannel ? null : cmdChannel
         }).then((data) => {
             toast.success('Guild settings updated!');
             setPrefix(data.data.prefix);
