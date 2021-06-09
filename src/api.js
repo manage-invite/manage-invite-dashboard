@@ -49,6 +49,10 @@ export const fetchSubscriptionPayments = (jwt, guildID, subID) => request(`guild
 export const fetchGuildAPIToken = (jwt, guildID) => request(`guilds/${guildID}/jwt`, jwt);
 export const regenGuildAPIToken = (jwt, guildID) => request(`guilds/${guildID}/jwt`, jwt, 'POST');
 
+/* Guild storages */
+export const fetchGuildStorages = (jwt, guildID) => request(`guilds/${guildID}/storages`, jwt);
+export const createGuildStorage = (jwt, guildID) => request(`guilds/${guildID}/storages`, jwt, 'POST');
+
 /* Guild leaderboard */
 export const fetchGuildLeaderboard = (guildID) => request(`guilds/${guildID}/leaderboard`);
 

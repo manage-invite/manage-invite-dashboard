@@ -48,3 +48,15 @@
 .text-muted {
     color: #82868a;
 }
+
+.storages-grid {
+    display: grid;
+}
+
+@media (min-width: 1080px) {
+    .storages-grid {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 0.5rem;
+        column-gap: 0.5rem;
+    }
+}
