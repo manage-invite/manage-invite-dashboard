@@ -101,7 +101,7 @@ const NavigationBar = () => {
                 <img className="img" src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="Logo" height="40px" />
                 <Link to="/">ManageInvite</Link>
             </div>
-            <div>
+            <div className="links-container">
                 <ul className="links">
                     <li><Link to="/status">Status</Link></li>
                     <li><a href="https://docs.manage-invite.xyz" target="_blank" rel="noreferrer">Documentation</a></li>
