@@ -134,9 +134,9 @@ nav {
 		.links a,button {
 			font-size: 1.25rem;
 		}
-		#nav-toggle:checked ~ .links {
+		#nav-toggle:checked ~ .links-container ~ .links {
 			top: 6.25rem;
-			bottom: 0rem;
+			bottom: 0rem !important;
 		}
 		.icon-burger {
 			display: block;
