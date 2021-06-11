@@ -10,7 +10,7 @@ import ReactTooltip from 'react-tooltip';
 import { socket, ensureSocketConnected } from '../socket';
 
 const Server = ({
-    serverID, serverName, serverIconURL, isAdded, isPremium, isWaitingVerification, isTrial
+    serverID, serverName, serverIconURL, isAdded, isPremium, isWaitingVerification, isTrial, isAdmin
 }) => {
     const [
         paypalEmail,
@@ -44,6 +44,7 @@ const Server = ({
     const addButton = ((isPremium || isTrial) && !isAdded);
     const manageButton = isPremium && isAdded;
     const manageTrialButton = isTrial && isAdded;
+    const missingPermissionsButton = isPremium && isAdded && !isAdmin;
 
     let manageButtonText = 'Get premium';
     let manageButtonColor = '#367fa9';
@@ -53,6 +54,9 @@ const Server = ({
     } else if (addButton) {
         manageButtonText = 'Add to Discord';
         manageButtonColor = '#3eb386';
+    } else if (missingPermissionsButton) {
+        manageButtonText = 'Missing permissions';
+        manageButtonColor = '#ff4c4c';
     } else if (manageButton) {
         manageButtonText = 'Manage';
         manageButtonColor = '#ff9100';
@@ -323,6 +327,7 @@ Server.propTypes = {
     isPremium: PropTypes.bool,
     isWaitingVerification: PropTypes.bool,
     isTrial: PropTypes.bool,
+    isAdmin: PropTypes.bool,
     serverID: PropTypes.string
 };
 

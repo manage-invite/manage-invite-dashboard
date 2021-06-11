@@ -54,7 +54,7 @@ const Servers = () => {
                                     : a.isWaitingVerification ? -1 : 1)
                                 : a.isPremium ? -1 : 1))
                         .map((guild) => (
-                            <Server key={guild.id} serverID={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} />
+                            <Server key={guild.id} serverID={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} isAdmin={guild.isAdmin} />
                         ))
                 ) : (
                     <>
