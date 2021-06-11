@@ -124,7 +124,7 @@ nav {
 			top: 6.25rem;
 			bottom: 100%;
 			width: auto;
-			height: auto;
+			height: calc(100vh - 6.25rem);
 			flex-direction: column;
 			justify-content: space-evenly;
 			background-color: #18191c;
