@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import FakeServer from '../components/FakeServer';
@@ -44,15 +45,16 @@ const Servers = () => {
             >
                 {userGuildsCache ? (
                     userGuildsCache
-                        .sort((a, b) => (
-                        // eslint-disable-next-line no-nested-ternary
-                            (a.isPremium === b.isPremium)
-                            // eslint-disable-next-line no-nested-ternary
-                                ? ((a.isWaitingVerification === b.isWaitingVerification)
-                                    // eslint-disable-next-line no-nested-ternary
-                                    ? (a.isAdded === b.isAdded ? 0 : a.isAdded ? -1 : 1)
-                                    : a.isWaitingVerification ? -1 : 1)
-                                : a.isPremium ? -1 : 1))
+                        .sort((a, b) => {
+                            if (a.isAdmin && !b.isAdmin) return -1;
+                            const adminCondition = a.isAdmin && b.isAdmin;
+                            if (adminCondition && a.isWaitingVerification && !b.isWaitingVerification) return -1;
+                            const isWaitingVerificationConditon = !a.isWaitingVerification && !b.isWaitingVerification;
+                            if (adminCondition && isWaitingVerificationConditon && a.isPremium && !b.isPremium) return -1;
+                            const premiumConditon = a.isPremium && b.isPremium;
+                            if (adminCondition && isWaitingVerificationConditon && premiumConditon && a.isAdded && !b.isAdded) return -1;
+                            return 0;
+                        })
                         .map((guild) => (
                             <Server key={guild.id} serverID={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} isAdmin={guild.isAdmin} />
                         ))

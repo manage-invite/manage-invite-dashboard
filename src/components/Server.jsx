@@ -44,19 +44,19 @@ const Server = ({
     const addButton = ((isPremium || isTrial) && !isAdded);
     const manageButton = isPremium && isAdded;
     const manageTrialButton = isTrial && isAdded;
-    const missingPermissionsButton = isPremium && isAdded && !isAdmin;
+    const missingPermissionsButton = isPremium && !isAdmin;
 
     let manageButtonText = 'Get premium';
     let manageButtonColor = '#367fa9';
     if (isWaitingVerification) {
         manageButtonText = 'Being verified...';
         manageButtonColor = '#FF7F50';
-    } else if (addButton) {
-        manageButtonText = 'Add to Discord';
-        manageButtonColor = '#3eb386';
     } else if (missingPermissionsButton) {
         manageButtonText = 'Missing permissions';
         manageButtonColor = '#ff4c4c';
+    } else if (addButton) {
+        manageButtonText = 'Add to Discord';
+        manageButtonColor = '#3eb386';
     } else if (manageButton) {
         manageButtonText = 'Manage';
         manageButtonColor = '#ff9100';
