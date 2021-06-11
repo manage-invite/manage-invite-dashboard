@@ -121,7 +121,6 @@ nav {
 			z-index: 9;
 			left: 0;
 			right: 0;
-			top: 6.25rem;
 			bottom: 100%;
 			width: auto;
 			height: calc(100vh - 6.25rem);
@@ -136,6 +135,7 @@ nav {
 			font-size: 1.25rem;
 		}
 		#nav-toggle:checked ~ .links {
+			top: 6.25rem;
 			bottom: 0rem;
 		}
 		.icon-burger {
