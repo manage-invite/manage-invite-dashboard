@@ -22,13 +22,14 @@ nav {
 		}
 	}
 
-	.links {
+	ul.links {
 		margin: 0;
 		height: 100%;
 		display: flex;
 		align-items: center;
 
 		li {
+			margin: 0 10px;
 			list-style: none;
 		}
 	}
