@@ -18,7 +18,7 @@ const Server = ({
         ipnURL,
         returnURL,
         cancelURL
-    ] = !process.env.REACT_APP_SANDBOX_PAYPAL_ENABLED
+    ] = process.env.REACT_APP_SANDBOX_PAYPAL_ENABLED !== 'true'
         ? [
             process.env.REACT_APP_PAYPAL_EMAIL,
             process.env.REACT_APP_PAYPAL_FORM_URL,
