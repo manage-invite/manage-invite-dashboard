@@ -293,7 +293,14 @@ const Server = ({
                 >
                     {manageButtonText}
                 </button>
-                <form className={`paypal-submit-${serverID}`} action={formURL} method="post">
+                <form
+                    className={`paypal-submit-${serverID}`}
+                    action={formURL}
+                    method="post"
+                    style={{
+                        display: 'none'
+                    }}
+                >
                     <input type="hidden" name="business" value={paypalEmail} />
 
                     <input type="hidden" name="lc" value="US" />
