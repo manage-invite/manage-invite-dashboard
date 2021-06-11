@@ -43,7 +43,7 @@ const ServerHome = () => {
                 </Link>
                 <div className="home-server-info">
                     <img
-                        src={iconURL}
+                        src={iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`}
                         alt="Server Icon"
                         style={{
                             borderRadius: '50%',
