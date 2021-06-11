@@ -101,15 +101,17 @@ const NavigationBar = () => {
                 <img className="img" src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="Logo" height="40px" />
                 <Link to="/">ManageInvite</Link>
             </div>
-            <ul className="links">
-                <li><Link to="/status">Status</Link></li>
-                <li><a href="https://docs.manage-invite.xyz" target="_blank" rel="noreferrer">Documentation</a></li>
-                <li><a href="https://developer.manage-invite.xyz" target="_blank" rel="noreferrer">Developers</a></li>
-                <li><a href={process.env.REACT_APP_DISCORD_URL} target="_blank" rel="noreferrer">Discord</a></li>
-                <li>
-                    {dashboardButton}
-                </li>
-            </ul>
+            <div className="links-container">
+                <ul className="links">
+                    <li><Link to="/status">Status</Link></li>
+                    <li><a href="https://docs.manage-invite.xyz" target="_blank" rel="noreferrer">Documentation</a></li>
+                    <li><a href="https://developer.manage-invite.xyz" target="_blank" rel="noreferrer">Developers</a></li>
+                    <li><a href={process.env.REACT_APP_DISCORD_URL} target="_blank" rel="noreferrer">Discord</a></li>
+                    <li>
+                        {dashboardButton}
+                    </li>
+                </ul>
+            </div>
             <label className="icon-burger" htmlFor="nav-toggle">
                 <div className="line" />
                 <div className="line" />

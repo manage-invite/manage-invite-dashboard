@@ -3,13 +3,15 @@ nav {
 	left: 0;
 	right: 0;
 	top: 0;
-	padding: 0 5%;
+	padding: 0 10px;
 	height: 6.25rem;
-    background-color: hsl(0, 0%, 4%);
+    	background-color: hsl(0, 0%, 4%);
+	display: flex;
+	justify-content: center;
 
 	.logo {
 		float: left;
-		width: 40%;
+		width: 50%;
 		height: 100%;
 		display: flex;
 		align-items: center;
@@ -20,17 +22,14 @@ nav {
 		}
 	}
 
-	.links {
-		float: right;
-		padding: 0;
+	ul.links {
 		margin: 0;
-		width: 40%;
 		height: 100%;
 		display: flex;
-		justify-content: space-around;
 		align-items: center;
 
 		li {
+			margin: 0 10px;
 			list-style: none;
 		}
 	}
@@ -40,7 +39,7 @@ nav {
 		color: white;
 	}
 
-	.links a, button {
+	.links-container a, button {
 		display: block;
 		padding: 1em;
 		font-size: 1rem;
@@ -88,19 +87,19 @@ nav {
 
 #dash-button {
 	background-color: transparent;
-    outline: none;
-    padding: 0.625rem 0.75rem !important;
-    border: 0.1rem solid rgb(255, 165, 0);
-    color: white;
-    border-radius:0.3rem;
-    transition: all 180ms ease-out 0s;
-    cursor: pointer;
+	outline: none;
+	padding: 0.625rem 0.75rem !important;
+	border: 0.1rem solid rgb(255, 165, 0);
+	color: white;
+	border-radius:0.3rem;
+	transition: all 180ms ease-out 0s;
+	cursor: pointer;
 	min-width: 8.75rem;
 }
 
 #dash-button:hover {
-    background-color: rgb(255, 165, 0);
-    color: white;
+	background-color: rgb(255, 165, 0);
+	color: white;
 }
 
 .logged-button {
@@ -109,34 +108,34 @@ nav {
 	justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1020px) {
 	nav {
 		.logo {
 			float: none;
 			width: auto;
 			padding-left: 0.625rem;
 		}
-		.links {
+		.links-container {
 			float: none;
 			position: fixed;
-			z-index: 9;
 			left: 0;
 			right: 0;
-			top: 6.25rem;
 			bottom: 100%;
 			width: auto;
-			height: auto;
+			height: calc(100vh - 6.25rem);
+			transition: cubic-bezier(0.39, 0.575, 0.565, 1);
+			overflow: hidden;
+		}
+		.links {
 			flex-direction: column;
 			justify-content: space-evenly;
 			background-color: #18191c;
-			overflow: hidden;
 			box-sizing: border-box;
-			transition: all .5s ease-in-out;
 		}
 		.links a,button {
 			font-size: 1.25rem;
 		}
-		#nav-toggle:checked ~ .links {
+		#nav-toggle:checked ~ .links-container {
 			bottom: 0rem;
 		}
 		.icon-burger {
