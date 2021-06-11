@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@danktuary/react-discord-message": "^1.0.2",
     "@sweetalert/with-react": "^0.1.1",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "easy-peasy": "^5.0.3",
     "node-sass": "^6.0.0",
     "prop-types": "^15.7.2",
@@ -19,10 +15,7 @@
     "react-select": "^4.3.0",
     "react-toastify": "^7.0.4",
     "react-tooltip": "^4.2.21",
-    "socket.io-client": "^4.0.0",
-    "sweetalert": "^2.1.2",
-    "swr": "^0.5.5",
-    "web-vitals": "^1.0.1"
+    "socket.io-client": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
