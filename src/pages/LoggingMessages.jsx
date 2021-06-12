@@ -39,7 +39,6 @@ const LoggingMessages = () => {
     const [joinDMUnknownMessage, setJoinDMUnknownMessage] = useState('');
     const [joinDMRegularMessage, setJoinDMRegularMessage] = useState('');
     const [joinDMEnabled, setJoinDMEnabled] = useState(false);
-    const [joinDMChannel, setJoinDMChannel] = useState(null);
     const [joinDMLoading, setJoinDMLoading] = useState(null);
 
     const updateGuildPlugins = (data) => {
@@ -57,7 +56,6 @@ const LoggingMessages = () => {
         setJoinDMRegularMessage(joinDMPlugin?.mainMessage || 'Welcome {user} in **{server}**! You were invited by **{inviter.tag}** (who now has **{inviter.invites}** invites).');
         setJoinDMVanityMessage(joinDMPlugin?.vanityMessage || 'Welcome {user} in **{server}**! You joined the server using a discord.gg invite defined by the guild owner (or admin).');
         setJoinDMUnknownMessage(joinDMPlugin?.unknownMessage || 'Welcome {user} in **{server}**! I can\'t figure out who invited you..');
-        setJoinDMChannel(joinDMPlugin?.channel);
         setJoinDMEnabled(joinDMPlugin?.enabled);
 
         setLeaveRegularMessage(leavePlugin?.mainMessage || 'Welcome {user} in **{server}**! I can\'t figure out who invited you...');
@@ -79,7 +77,6 @@ const LoggingMessages = () => {
 
     const getJoinDMPluginData = (enabled) => ({
         enabled,
-        channel: joinDMChannel,
         mainMessage: joinDMRegularMessage,
         vanityMessage: joinDMVanityMessage,
         unknownMessage: joinDMUnknownMessage
@@ -430,16 +427,6 @@ const LoggingMessages = () => {
                 </SettingCard>
                 <SettingCard>
                     <h2>Join DM messages</h2>
-                    <div>
-                        <h4>Channel</h4>
-                        <Select
-                            value={joinDMChannel}
-                            defaultValue={joinDMChannel}
-                            placeholder="No specific channel"
-                            options={channelsOptions}
-                            onChange={(channel) => setJoinDMChannel(channel.value)}
-                        />
-                    </div>
                     <div>
                         <h4>Message</h4>
                         <Tabs>
