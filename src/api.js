@@ -54,7 +54,7 @@ export const fetchGuildStorages = (jwt, guildID) => request(`guilds/${guildID}/s
 export const createGuildStorage = (jwt, guildID) => request(`guilds/${guildID}/storages`, jwt, 'POST');
 
 /* Guild leaderboard */
-export const fetchGuildLeaderboard = (guildID) => request(`guilds/${guildID}/leaderboard`);
+export const fetchGuildLeaderboard = (jwt, guildID) => request(`guilds/${guildID}/leaderboard`, jwt);
 
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');

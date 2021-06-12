@@ -8,6 +8,7 @@ import {
 import Button from '../components/lib/Button';
 import SettingCard from '../components/SettingCard';
 import SettingContainer from '../components/SettingContainer';
+import LoadingAnimation from '../components/utils/LoadingAnimation';
 import './Leaderboard.css';
 
 const Leaderboard = () => {
@@ -19,7 +20,7 @@ const Leaderboard = () => {
     const [settings, setSettings] = useState(null);
 
     const syncLeaderboard = () => {
-        fetchGuildLeaderboard(id).then((data) => {
+        fetchGuildLeaderboard(userJwt, id).then((data) => {
             setLeaderboard(data.data);
         });
     };
@@ -59,7 +60,8 @@ const Leaderboard = () => {
                 <h4>This is the current leaderboard of your Discord server. You can restore previous versions below.</h4>
                 <SettingCard>
                     <div>
-                        {leaderboard && (leaderboard.length ? leaderboard.map((user, position) => (
+                        { /* eslint-disable-next-line no-nested-ternary */ }
+                        {leaderboard ? (leaderboard.length ? leaderboard.map((user, position) => (
                             <div className="leaderboard-item">
                                 <div className="top-whois">
                                     { /* eslint-disable-next-line no-nested-ternary */ }
@@ -84,7 +86,7 @@ const Leaderboard = () => {
                             </div>
                         )) : (
                             <p>No invites to show here! Start inviting people to appear here! 🥳</p>
-                        ))}
+                        )) : <LoadingAnimation centered />}
                     </div>
                 </SettingCard>
                 <h2>Guild Storages</h2>
