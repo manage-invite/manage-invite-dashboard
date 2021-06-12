@@ -39,7 +39,7 @@ const Status = () => {
                     Shard:
                     {' '}
                     { /* eslint-disable-next-line no-bitwise */ }
-                    {!shard || Number.isNaN(shard) ? 'Unknown' : (shard >> 22) % (process.env.REACT_APP_SHARD_COUNT)}
+                    {!shard || Number.isNaN(shard) ? 'Unknown' : (BigInt(shard) >> 22n) % (process.env.REACT_APP_SHARD_COUNT)}
                 </h4>
             </div>
             <div className="status-grid">
