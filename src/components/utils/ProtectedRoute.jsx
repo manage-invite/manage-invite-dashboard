@@ -36,7 +36,7 @@ const ProtectedRoute = ({
     };
 
     useEffect(() => {
-        if (userJwt && storeRehydrated && !guildsCacheFetched) refetchUserGuilds();
+        if (userJwt && storeRehydrated && fetchServers && !guildsCacheFetched) refetchUserGuilds();
     }, [userJwt, storeRehydrated]);
 
     return (
