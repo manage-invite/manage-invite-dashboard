@@ -16,6 +16,7 @@ const ProtectedRoute = ({
     const guildsCache = useStoreState((state) => state.guildsCache.cache);
     const guildsCacheFetched = useStoreState((state) => state.guildsCache.fetched);
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
+    const loginLoading = useStoreState((state) => state.userSession.loginLoading);
 
     const [errored, setErrored] = useState(false);
 
@@ -44,6 +45,9 @@ const ProtectedRoute = ({
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}
             render={() => {
+                if (!userJwt && loginLoading && window.location.pathname === '/servers') {
+                    return <Component />;
+                }
                 if (userJwt) {
                     if (fetchServers && !guildsCacheFetched) {
                         return errored
