@@ -17,7 +17,7 @@ import Premium from './pages/Premium';
 import Status from './pages/Status';
 import ApiToken from './pages/ApiToken';
 import Leaderboard from './pages/Leaderboard';
-import InvitesSettings from './pages/InvitesSettings';
+import Alerts from './pages/Alerts';
 
 const App = () => (
     <StoreProvider store={store}>
@@ -29,7 +29,7 @@ const App = () => (
                     <ProtectedRoute path="/servers/:id/api" exact component={ApiToken} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id/premium" exact component={Premium} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id/messages" exact component={LoggingMessages} fetchServers serverPermissionsProtection />
-                    <ProtectedRoute path="/servers/:id/invites" exact component={InvitesSettings} fetchServers serverPermissionsProtection />
+                    <ProtectedRoute path="/servers/:id/alerts" exact component={Alerts} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id/settings" exact component={ServerSettings} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers/:id" exact component={ServerHome} fetchServers serverPermissionsProtection />
                     <ProtectedRoute path="/servers" exact component={Servers} />

@@ -23,6 +23,7 @@ const ServerSettings = () => {
     const [prefix, setPrefix] = useState(null);
     const [language, setLanguage] = useState(null);
     const [cmdChannel, setCmdChannel] = useState(null);
+    const [fakeThreshold, setFakeThreshold] = useState(null);
 
     const [languagesOptions, setLanguagesOptions] = useState([]);
     const [channelsOptions, setChannelsOptions] = useState([]);
@@ -32,7 +33,8 @@ const ServerSettings = () => {
         updateGuildSettings(userJwt, id, {
             prefix,
             language,
-            cmdChannel: !cmdChannel ? null : cmdChannel
+            cmdChannel: cmdChannel || null,
+            fakeThreshold: fakeThreshold || null
         }).then((data) => {
             toast.success('Guild settings updated!');
             setPrefix(data.data.prefix);
@@ -42,6 +44,7 @@ const ServerSettings = () => {
             setGuildSettingsFetched(true);
         }).catch((err) => {
             toast.error(err.message);
+            setUpdating(false);
         });
     };
 
@@ -55,6 +58,10 @@ const ServerSettings = () => {
 
     const onCmdChannelChange = (selectedChannel) => {
         setCmdChannel(selectedChannel.value);
+    };
+
+    const onFakeThresholdChange = (selectedFakeThreshold) => {
+        setFakeThreshold(selectedFakeThreshold.target.value);
     };
 
     useEffect(() => {
@@ -77,6 +84,7 @@ const ServerSettings = () => {
             setPrefix(data.data.prefix);
             setLanguage(data.data.language);
             setCmdChannel(data.data.cmdChannel);
+            setFakeThreshold(data.data.fakeThreshold);
             setGuildSettingsFetched(true);
         });
     }, []);
@@ -90,6 +98,7 @@ const ServerSettings = () => {
                         <>
                             <div className="setting-form">
                                 <h3>Command Language</h3>
+                                <p>Command language of the bot on Discord</p>
                                 <Select
                                     value={language}
                                     defaultValue={language}
@@ -99,6 +108,7 @@ const ServerSettings = () => {
                             </div>
                             <div className="setting-form">
                                 <h3>Command Channel</h3>
+                                <p>Commands executed in other channels will not work.</p>
                                 <Select
                                     value={cmdChannel}
                                     defaultValue={cmdChannel}
@@ -109,9 +119,20 @@ const ServerSettings = () => {
                             </div>
                             <div className="setting-form">
                                 <h3>Command Prefix</h3>
+                                <p>The character to use before the command name.</p>
                                 <Input
                                     value={prefix}
                                     onChange={onPrefixChange}
+                                />
+                            </div>
+                            <div className="setting-form">
+                                <h3>Fake threshold</h3>
+                                { /* eslint-disable-next-line max-len */ }
+                                <p>Mark as fake the joins for accounts younger than this setting (in days).</p>
+                                <Input
+                                    value={fakeThreshold}
+                                    placeholder="Setting disabled!"
+                                    onChange={onFakeThresholdChange}
                                 />
                             </div>
                         </>

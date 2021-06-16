@@ -90,15 +90,15 @@ const ServerHome = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="home-plugins-item" onClick={() => history.push(`/servers/${id}/invites`)} aria-hidden="true">
+                    <div className="home-plugins-item" onClick={() => history.push(`/servers/${id}/alerts`)} aria-hidden="true">
                         <div className="home-plugins-icon">
-                            <img src="https://img.icons8.com/fluent/48/000000/invite.png" alt="invite" />
+                            <img src="https://img.icons8.com/fluent/48/000000/commercial.png" alt="alerts" />
                         </div>
                         <div>
-                            <span className="home-plugins-item-title">Invites</span>
+                            <span className="home-plugins-item-title">Invites Alerts</span>
                             <p className="home-plugins-item-content">
                                 { /* eslint-disable-next-line max-len */ }
-                                Control the invites behavior, such as the number of days before an account is considered as fake.
+                                Send a message when a member reaches a specific number of invites!
                             </p>
                         </div>
                     </div>
