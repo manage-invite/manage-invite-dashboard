@@ -31,7 +31,7 @@ const Status = () => {
                 display: 'flex'
             }}
             >
-                <Input placeholder="ID of your server..." onChange={(e) => setShard(e.target.value)} />
+                <Input placeholder="ID of your server..." onChange={(e) => Number.isNaN(e) && setShard(e.target.value)} />
                 <h4 style={{
                     margin: '0.6rem'
                 }}
