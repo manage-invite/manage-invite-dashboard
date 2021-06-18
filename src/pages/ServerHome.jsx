@@ -95,7 +95,24 @@ const ServerHome = () => {
                             <img src="https://img.icons8.com/fluent/48/000000/commercial.png" alt="alerts" />
                         </div>
                         <div>
-                            <span className="home-plugins-item-title">Invites Alerts</span>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'space-between'
+                            }}
+                            >
+                                <span className="home-plugins-item-title">Invites Alerts</span>
+                                <div style={{
+                                    padding: '0.2rem',
+                                    backgroundColor: '#6495ED',
+                                    borderRadius: '5px',
+                                    fontSize: '0.7rem',
+                                    display: 'flex',
+                                    alignItems: 'center'
+                                }}
+                                >
+                                    BETA
+                                </div>
+                            </div>
                             <p className="home-plugins-item-content">
                                 { /* eslint-disable-next-line max-len */ }
                                 Send a message when a member reaches a specific number of invites!

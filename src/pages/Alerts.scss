@@ -19,8 +19,23 @@
     margin-top: 0.5rem;
 }
 
+.variable-table {
+    width: 100%;
+    thead th {
+        font-weight: 800;
+    }
+    th {
+        border-bottom: 1px solid gray;
+        width: 20%;
+    }
+    td {
+        text-align: center;
+    }
+}
+
 @media (min-width: 1080px) {
     .alerts {
         width: 100%;
+        border-collapse: collapse
     }
 }

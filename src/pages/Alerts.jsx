@@ -12,10 +12,21 @@ import Button from '../components/lib/Button';
 import Select from '../components/lib/Select';
 import TextArea from '../components/lib/TextArea';
 import Input from '../components/lib/Input';
-import './Alerts.css';
+import './Alerts.scss';
 import LoadingAnimation from '../components/utils/LoadingAnimation';
 
 const Alerts = () => {
+    const variables = [
+        {
+            name: 'user',
+            description: 'The user that just obtained or lost the number of invites'
+        },
+        {
+            name: 'inviteCount',
+            description: 'The number of invites the user obtained or lost'
+        }
+    ];
+
     const userJwt = useStoreState((state) => state.userSession.jwt);
     const { id } = useParams();
 
@@ -94,7 +105,7 @@ const Alerts = () => {
         newAlerts.push({
             inviteCount: 1,
             channelID: '',
-            message: 'Congrats {user}, you just reached level {level}!',
+            message: 'Congrats {user}, you just reached level {inviteCount}!',
             type: 'up'
         });
         setUpdatedAlerts(newAlerts);
@@ -116,6 +127,10 @@ const Alerts = () => {
     return (
         <SettingContainer>
             <SettingCard>
+                <p>
+                    { /* eslint-disable-next-line max-len */ }
+                    Invite alerts are useful to get notified when a member reaches a certain number of invites!
+                </p>
                 <div className="alerts-container">
                     <table className="alerts">
                         <thead>
@@ -232,6 +247,30 @@ const Alerts = () => {
                         </tbody>
                     </table>
                 </div>
+            </SettingCard>
+            <SettingCard style={{
+                marginTop: '1rem'
+            }}
+            >
+                <h3>Variables</h3>
+                { /* eslint-disable-next-line max-len */ }
+                <p>You can use these variables in your message, they will automatically be replaced with the right value.</p>
+                <table className="variable-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {variables.map((variable) => (
+                            <tr>
+                                <th>{`{${variable.name}}`}</th>
+                                <th>{variable.description}</th>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </SettingCard>
         </SettingContainer>
     );
