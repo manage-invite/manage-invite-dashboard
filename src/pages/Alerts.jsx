@@ -105,7 +105,7 @@ const Alerts = () => {
         newAlerts.push({
             inviteCount: 1,
             channelID: '',
-            message: 'Congrats {user}, you just reached level {inviteCount}!',
+            message: 'Congrats {user}, you just reached **{inviteCount}** invites!',
             type: 'up'
         });
         setUpdatedAlerts(newAlerts);
