@@ -56,6 +56,12 @@ export const createGuildStorage = (jwt, guildID) => request(`guilds/${guildID}/s
 /* Guild leaderboard */
 export const fetchGuildLeaderboard = (jwt, guildID) => request(`guilds/${guildID}/leaderboard`, jwt);
 
+/* Guild alerts */
+export const fetchGuildAlerts = (jwt, guildID) => request(`guilds/${guildID}/alerts`, jwt);
+export const createGuildAlert = (jwt, guildID, alertData) => request(`guilds/${guildID}/alerts`, jwt, 'POST', alertData);
+export const updateGuildAlert = (jwt, guildID, alertID, alertData) => request(`guilds/${guildID}/alerts/${alertID}`, jwt, 'POST', alertData);
+export const deleteGuildAlert = (jwt, guildID, alertID) => request(`guilds/${guildID}/alerts/${alertID}`, jwt, 'DELETE');
+
 /* Global */
 export const fetchAvailableLanguages = () => request('meta/languages');
 export const fetchShardsStatus = () => request('status/shards');
