@@ -14,6 +14,11 @@ const userSessionModel = {
     }),
     updateLoginLoading: action((state, payload) => {
         state.loginLoading = payload;
+    }),
+    logout: action((state) => {
+        state.user = null;
+        state.jwt = null;
+        state.loginLoading = false;
     })
 };
 

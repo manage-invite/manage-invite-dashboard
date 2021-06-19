@@ -8,6 +8,7 @@ import Error from '../components/utils/Error';
 
 const Servers = () => {
     const userJWT = useStoreState((state) => state.userSession.jwt);
+    const logout = useStoreActions((actions) => actions.userSession.logout);
     const userGuildsCache = useStoreState((state) => state.guildsCache.cache);
     const updateUserGuildsCache = useStoreActions((actions) => actions.guildsCache.update);
 
@@ -17,8 +18,9 @@ const Servers = () => {
         setErrored(false);
         fetchUserGuilds(userJWT).then((guilds) => {
             updateUserGuildsCache(guilds);
-        }).catch(() => {
-            setErrored(true);
+        }).catch((e) => {
+            if (e.message === 'Access token is expired') logout();
+            else setErrored(true);
         });
     };
 
