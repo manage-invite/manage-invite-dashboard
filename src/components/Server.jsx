@@ -265,7 +265,6 @@ const Server = ({
             });
             setTimeout(() => {
                 const onClick = () => {
-                    // todo handle paypal payment
                     document.querySelector(`.paypal-submit-${serverID}`).submit();
                     document.querySelector('.swal-button-confirm').removeEventListener('click', onClick);
                 };
