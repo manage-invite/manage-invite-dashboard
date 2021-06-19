@@ -31,15 +31,20 @@ const Status = () => {
                 display: 'flex'
             }}
             >
-                <Input placeholder="ID of your server..." onChange={(e) => (!Number.isNaN(e.target.value)) && setShard(e.target.value)} value={shard} />
+                <Input
+                    placeholder="ID of your server..."
+                    // eslint-disable-next-line no-restricted-globals
+                    onChange={(e) => (!isNaN(e.target.value)) && setShard(e.target.value)}
+                    value={shard}
+                />
                 <h4 style={{
                     margin: '0.6rem'
                 }}
                 >
                     Shard:
                     {' '}
-                    { /* eslint-disable-next-line no-bitwise */ }
-                    {!shard || Number.isNaN(shard) ? 'Unknown' : Number((BigInt(shard) >> 22n) % (BigInt(process.env.REACT_APP_SHARD_COUNT)))}
+                    { /* eslint-disable-next-line no-bitwise, no-restricted-globals */ }
+                    {!shard || isNaN(shard) ? 'Unknown' : Number((BigInt(shard) >> 22n) % (BigInt(process.env.REACT_APP_SHARD_COUNT)))}
                 </h4>
             </div>
             <div className="status-grid">
