@@ -6,7 +6,7 @@ import './Status.scss';
 
 const Status = () => {
     const [statuses, setStatuses] = useState([]);
-    const [shard, setShard] = useState(null);
+    const [shard, setShard] = useState('');
 
     useEffect(() => {
         fetchShardsStatus().then((data) => {
@@ -31,7 +31,7 @@ const Status = () => {
                 display: 'flex'
             }}
             >
-                <Input placeholder="ID of your server..." onChange={(e) => !Number.isNaN(e) && setShard(e.target.value)} />
+                <Input placeholder="ID of your server..." onChange={(e) => (!Number.isNaN(e.target.value)) && setShard(e.target.value)} value={shard} />
                 <h4 style={{
                     margin: '0.6rem'
                 }}
