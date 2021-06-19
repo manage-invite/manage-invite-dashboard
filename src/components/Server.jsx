@@ -86,7 +86,7 @@ const Server = ({
             });
         } else if (manageButton && !isWaitingVerification && isAdmin) {
             history.push(`/servers/${serverID}`);
-        } else if (!isWaitingVerification) {
+        } else if (!missingPermissionsButton && !isWaitingVerification) {
             swal({
                 buttons: {
                     cancel: 'Cancel',
