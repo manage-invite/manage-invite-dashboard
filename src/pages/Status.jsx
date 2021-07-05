@@ -5,7 +5,7 @@ import ShardStatus from '../components/ShardStatus';
 import './Status.scss';
 
 const Status = () => {
-    const [statuses, setStatuses] = useState([]);
+    const [statuses, setStatuses] = useState(null);
     const [shard, setShard] = useState('');
 
     useEffect(() => {
@@ -23,6 +23,26 @@ const Status = () => {
         }}
         >
             <h2>ManageInvite Status</h2>
+            <div style={{
+                display: 'flex',
+                alignItems: 'center'
+            }}
+            >
+                <h4 style={{
+                    marginRight: '0.4rem'
+                }}
+                >
+                    {statuses?.uptime}
+                    % of uptime
+                </h4>
+                <h5>
+                    {' '}
+                    in the last 7 days (data collected by
+                    {' '}
+                    <a href="https://watchbot.app">Watchbot.app</a>
+                    )
+                </h5>
+            </div>
             { /* eslint-disable-next-line max-len */ }
             <p>To improve the ManageInvite stability, we balance the load by launching the bot several times. Each shard represents an instance of the bot. To know on which shard your server is located, fill in the following form: </p>
             <div style={{
@@ -48,7 +68,7 @@ const Status = () => {
                 </h4>
             </div>
             <div className="status-grid">
-                {statuses.map((status) => (
+                {statuses && statuses.shards.map((status) => (
                     <ShardStatus key={status.id} status={status} />
                 ))}
             </div>
