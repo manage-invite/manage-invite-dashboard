@@ -10,8 +10,9 @@ const Premium = () => {
     const { id } = useParams();
 
     const [subscriptions, setSubscriptions] = useState([]);
+    const [payments, setPayments] = useState([]);
     // eslint-disable-next-line max-len
-    const subPayPal = subscriptions.some((sub) => !sub.cancelled && new Date(sub.expiresAt).getTime() > (Date.now() - 3 * 24 * 60 * 60 * 1000) && sub.subLabel === 'Premium Monthly 1 Guild');
+    const subPayPal = subscriptions.some((sub) => !sub.cancelled && new Date(sub.expiresAt).getTime() > (Date.now() - 3 * 24 * 60 * 60 * 1000) && sub.subLabel === 'Premium Monthly 1 Guild' && payments.filter((p) => p.subID === sub.id && p.type === 'paypal_dash_signup_month').length > payments.filter((p) => p.subID === sub.id && p.type === 'paypal_dash_cancel_month').length);
     // eslint-disable-next-line max-len
     const currentSub = subscriptions.sort((a, b) => new Date(b.expiresAt).getTime() - new Date(a.expiresAt).getTime())[0];
     // eslint-disable-next-line max-len
@@ -19,7 +20,8 @@ const Premium = () => {
 
     useEffect(() => {
         fetchGuildSubscriptions(userJwt, id).then((data) => {
-            setSubscriptions(data.data);
+            setSubscriptions(data.data.subscriptions);
+            setPayments(data.data.payments);
         });
     }, []);
 
