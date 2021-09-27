@@ -9508,12 +9508,12 @@ react-dev-utils@^11.0.3:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-device-detect@^1.17.0:
-  version "1.17.0"
-  resolved "https://registry.npmjs.org/react-device-detect/-/react-device-detect-1.17.0.tgz#a00b4fd6880cebfab3fd8a42a79dc0290cdddca9"
-  integrity sha512-bBblIStwpHmoS281JFIVqeimcN3LhpoP5YKDWzxQdBIUP8S2xPvHDgizLDhUq2ScguLfVPmwfF5y268EEQR60w==
+react-device-detect@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-2.0.0.tgz#768a30eb3e871829c891bde85e25aadc408ecd2c"
+  integrity sha512-tXHRYaPGSOPU+gcbmFHnkZdZqC4Cn/VcnGrQEcjem+qjEg4lfKtCoBAIA+MmbPtoHXcxrny4+hJIOD9AnEowYQ==
   dependencies:
-    ua-parser-js "^0.7.24"
+    ua-parser-js "^0.7.28"
 
 react-dom@^17.0.2:
   version "17.0.2"
@@ -11439,9 +11439,9 @@ typedarray@^0.0.6:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-ua-parser-js@^0.7.24:
+ua-parser-js@^0.7.28:
   version "0.7.28"
-  resolved "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
   integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 unbox-primitive@^1.0.1:
