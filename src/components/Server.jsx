@@ -48,10 +48,7 @@ const Server = ({
 
     let manageButtonText = 'Get premium';
     let manageButtonColor = '#367fa9';
-    if (isWaitingVerification) {
-        manageButtonText = 'Being verified...';
-        manageButtonColor = '#FF7F50';
-    } else if (missingPermissionsButton) {
+    if (missingPermissionsButton) {
         manageButtonText = 'Missing permissions';
         manageButtonColor = '#ff4c4c';
     } else if (addButton) {
@@ -63,6 +60,9 @@ const Server = ({
     } else if (manageTrialButton) {
         manageButtonText = 'Manage (trial)';
         manageButtonColor = '#3eb386';
+    } else if (isWaitingVerification) {
+        manageButtonText = 'Being verified...';
+        manageButtonColor = '#FF7F50';
     }
 
     const handleManageClick = () => {
