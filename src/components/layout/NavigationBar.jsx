@@ -36,6 +36,7 @@ const NavigationBar = () => {
                 updateLoginLoading(false);
             });
             socket.on('login', (userData) => {
+                console.log(userData);
                 console.log(`[WS] Login payload received. User ID is ${userData.id}.`);
                 updateUser(userData);
             });
