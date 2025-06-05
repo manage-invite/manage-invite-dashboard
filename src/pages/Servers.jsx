@@ -50,11 +50,7 @@ const Servers = () => {
                         .sort((a, b) => {
                             if (a.isAdmin && !b.isAdmin) return -1;
                             const adminCondition = a.isAdmin && b.isAdmin;
-                            if (adminCondition && a.isWaitingVerification && !b.isWaitingVerification) return -1;
-                            const isWaitingVerificationConditon = !a.isWaitingVerification && !b.isWaitingVerification;
-                            if (adminCondition && isWaitingVerificationConditon && a.isPremium && !b.isPremium) return -1;
-                            const premiumConditon = a.isPremium && b.isPremium;
-                            if (adminCondition && isWaitingVerificationConditon && premiumConditon && a.isAdded && !b.isAdded) return -1;
+                            if (adminCondition && (a.isPremium || a.isWaitingVerification) && !(b.isPremium || b.isWaitingForVerification)) return -1;
                             return 0;
                         })
                         .map((guild) => (
