@@ -275,7 +275,7 @@ const Server = ({
 
     return (
         <>
-            {(isWaitingVerification && !manageButton) && <ReactTooltip multiline />}
+            {(isWaitingVerification && !isPremium) && <ReactTooltip multiline />}
             <div className="server">
                 <div className="server-info">
                     <img className="server-icon" src={serverIconURL} alt="Server" />
