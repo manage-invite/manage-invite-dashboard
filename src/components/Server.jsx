@@ -275,14 +275,14 @@ const Server = ({
 
     return (
         <>
-            {isWaitingVerification && <ReactTooltip multiline />}
+            {(isWaitingVerification && !manageButton) && <ReactTooltip multiline />}
             <div className="server">
                 <div className="server-info">
                     <img className="server-icon" src={serverIconURL} alt="Server" />
                     <span className="server-name">{serverName}</span>
                 </div>
                 <button
-                    data-tip={isWaitingVerification ? 'PayPal usually takes 5 minutes to send us the payment data. <br />If your payment has not been verified after 15 minutes, please join our support server.' : null}
+                    data-tip={(isWaitingVerification && !manageButton) ? 'PayPal usually takes 5 minutes to send us the payment data. <br />If your payment has not been verified after 15 minutes, please join our support server.' : null}
                     type="button"
                     className="manage-button"
                     style={{
