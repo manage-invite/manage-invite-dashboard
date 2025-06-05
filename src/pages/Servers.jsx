@@ -49,9 +49,14 @@ const Servers = () => {
                     userGuildsCache
                         .sort((a, b) => {
                             if (a.isAdmin && !b.isAdmin) return -1;
-                            const adminCondition = a.isAdmin && b.isAdmin;
-                            if (adminCondition && (a.isPremium || a.isWaitingVerification) && !(b.isPremium || b.isWaitingForVerification)) return -1;
-                            return 0;
+                            if (!a.isAdmin && b.isAdmin) return 1;
+                        
+                            const aPriority = (a.isPremium ? 2 : 0) + (a.isWaitingVerification ? 1 : 0);
+                            const bPriority = (b.isPremium ? 2 : 0) + (b.isWaitingVerification ? 1 : 0);
+                            if (aPriority > bPriority) return -1;
+                            if (aPriority < bPriority) return 1;
+                        
+                            return a.name.localeCompare(b.name);
                         })
                         .map((guild) => (
                             <Server key={guild.id} serverID={guild.id} serverName={guild.name} serverIconURL={guild.iconURL || `${process.env.PUBLIC_URL}/default-server-icon.png`} isPremium={guild.isPremium} isTrial={guild.isTrial} isWaitingVerification={guild.isWaitingVerification} isAdded={guild.isAdded} isAdmin={guild.isAdmin} />
