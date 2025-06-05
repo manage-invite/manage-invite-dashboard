@@ -84,7 +84,7 @@ const Server = ({
                     addWindow.close();
                 });
             });
-        } else if (manageButton && !isWaitingVerification && isAdmin) {
+        } else if (manageButton && isAdmin) {
             history.push(`/servers/${serverID}`);
         } else if (!missingPermissionsButton && !isWaitingVerification) {
             swal({
