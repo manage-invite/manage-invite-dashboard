@@ -50,12 +50,12 @@ const Servers = () => {
                         .sort((a, b) => {
                             if (a.isAdmin && !b.isAdmin) return -1;
                             if (!a.isAdmin && b.isAdmin) return 1;
-                        
+
                             const aPriority = (a.isPremium ? 2 : 0) + (a.isWaitingVerification ? 1 : 0);
                             const bPriority = (b.isPremium ? 2 : 0) + (b.isWaitingVerification ? 1 : 0);
                             if (aPriority > bPriority) return -1;
                             if (aPriority < bPriority) return 1;
-                        
+
                             return a.name.localeCompare(b.name);
                         })
                         .map((guild) => (
